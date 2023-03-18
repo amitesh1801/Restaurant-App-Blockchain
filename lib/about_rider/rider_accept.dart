@@ -10,7 +10,6 @@ import 'package:projectfood/about_rider/rider_home.dart';
 import 'package:web3dart/web3dart.dart' as web3dart;
 
 class RiderAccept extends StatefulWidget {
-  //ประกาศ constructor เพื่อรับค่าจากหน้าอื่น
   final String MenuPrice;
   final String dataID;
   final String resName;
@@ -39,9 +38,9 @@ class _RiderAcceptState extends State<RiderAccept> {
   late web3dart.Web3Client ethClient;
   bool data = false;
   final myAddress =
-      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //หมายเลขกระเป๋าตัง Rider
+      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; // addressRider
 
-  //Set ค่าตั้งต้น
+  //Set Default
   @override
   void initState() {
     super.initState();
@@ -49,10 +48,10 @@ class _RiderAcceptState extends State<RiderAccept> {
     httpClient = Client();
     ethClient = web3dart.Web3Client(
         "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3",
-        httpClient); //เก็บ url infura
+        httpClient); //Collect url infura
   }
 
-  //load smartcontract จากไฟล์ Json
+  //load smartcontract from Json file
   Future<web3dart.DeployedContract> loadContract() async {
     String abi = await rootBundle.loadString("lib/assets/abi.json");
     String contractAddress =
@@ -66,7 +65,7 @@ class _RiderAcceptState extends State<RiderAccept> {
 
   var firebaseUser = FirebaseAuth.instance.currentUser;
 
-  //เป็นส่วน UI แสดงผลบนหน้าจอ
+  //UI
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +79,7 @@ class _RiderAcceptState extends State<RiderAccept> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "คำสั่งซื้อ",
+            "Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -172,7 +171,7 @@ class _RiderAcceptState extends State<RiderAccept> {
                       Container(
                         alignment: Alignment.center,
                         child: Text(
-                          "รายได้ของคุณ",
+                          "Your Income",
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -211,7 +210,7 @@ class _RiderAcceptState extends State<RiderAccept> {
                             children: [
                               Container(
                                 child: Text(
-                                  "ค่าอาหารทั้งหมด",
+                                  "Total Food Cost",
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.white,
@@ -344,15 +343,14 @@ class _RiderAcceptState extends State<RiderAccept> {
                 primary: const Color.fromRGBO(0, 177, 62, 1),
               ),
               onPressed: () async {
-                String stateAccept = "1"; //รับคำสั่งซื้อ
-                //query ข้อมูลจาก firebase
+                String stateAccept = "1"; //Receive Order
+                //query info from firebase
                 var result = await FirebaseFirestore.instance
                     .collection("Riders")
                     .where("rider_id", isEqualTo: firebaseUser!.uid)
                     .get();
 
                 result.docs.forEach((rider_data) {
-                  //ฟังก์ชันรับคำสั่งซื้อของพนักงานขนส่งอาหาร
                   riderAccept(BuildContext context) async {
                     web3dart.EthPrivateKey credentials =
                         web3dart.EthPrivateKey.fromHex(rider_data.data()[
@@ -379,11 +377,11 @@ class _RiderAcceptState extends State<RiderAccept> {
                     return result;
                   }
 
-                  //  เรียกใช้ ฟังก์ชั้นรับออเดอร์
+                  //  Call the order function.
                   riderAccept(context);
                   print(riderAccept.runtimeType);
 
-                  print("ไรเดอร์รับคำสั่งซื้อแล้ว");
+                  print("Rider received the order.");
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return RiderSetMenu(
                       dataID: widget.dataID.toString(),
@@ -402,7 +400,7 @@ class _RiderAcceptState extends State<RiderAccept> {
                 });
               },
               child: const Text(
-                "รับคำสั่งซื้อ",
+                "Receive Order",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
