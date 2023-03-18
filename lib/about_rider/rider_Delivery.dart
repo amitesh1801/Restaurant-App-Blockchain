@@ -37,7 +37,7 @@ class _RiderDeliveryState extends State<RiderDelivery> {
   late Web3Client ethClient;
   bool data = false;
   final myAddress =
-      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //หมายเลขกระเป๋าตัง Rider
+      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; // Rider
   @override
   void initState() {
     super.initState();
@@ -70,7 +70,7 @@ class _RiderDeliveryState extends State<RiderDelivery> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ส่งคำสั่งซื้อ",
+            "Send Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -220,10 +220,10 @@ class _RiderDeliveryState extends State<RiderDelivery> {
                 }
 
                 // print(widget.dataId);
-                //เรียกใช้ ฟังก์ชั้นรับออเดอร์
+                //Call the order function
                 riderDelivery(context);
                 print(riderDelivery.runtimeType);
-                print("ถึงที่หมายแล้ว");
+                print("Arrived at the destination");
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return RiderDeliveryDate(
                     dataID: widget.dataID.toString(),
@@ -241,7 +241,7 @@ class _RiderDeliveryState extends State<RiderDelivery> {
                 }));
               },
               child: const Text(
-                "ฉันมาถึงแล้ว",
+                "I have Arrived!",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
