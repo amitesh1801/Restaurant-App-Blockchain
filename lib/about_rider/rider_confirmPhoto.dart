@@ -76,7 +76,7 @@ class _RiderConfirmPhotoState extends State<RiderConfirmPhoto> {
   }
 
   final myAddress =
-      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //หมายเลขกระเป๋าตัง Rider
+      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //addressRider
   @override
   void initState() {
     super.initState();
@@ -110,7 +110,7 @@ class _RiderConfirmPhotoState extends State<RiderConfirmPhoto> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ถ่ายรูป",
+            "Take a Photo",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -166,7 +166,7 @@ class _RiderConfirmPhotoState extends State<RiderConfirmPhoto> {
                     Navigator.pop(context);
                   },
                   child: const Text(
-                    "ถ่ายใหม่",
+                    "Retake",
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -215,11 +215,11 @@ class _RiderConfirmPhotoState extends State<RiderConfirmPhoto> {
                         return result;
                       }
 
-                      //เรียกใช้ ฟังก์ชั้นรับออเดอร์
+                      //Call the order function.
                       riderSetMenu(context);
                       print(riderSetMenu.runtimeType);
                       print(widget.dataID);
-                      print("รับอาหารแล้ว");
+                      print("Food Received");
                     });
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
@@ -239,7 +239,7 @@ class _RiderConfirmPhotoState extends State<RiderConfirmPhoto> {
                     }));
                   },
                   child: const Text(
-                    "ส่ง",
+                    "Send",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
