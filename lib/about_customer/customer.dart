@@ -95,7 +95,7 @@ class _CustomerState extends State<Customer> {
                                   }));
                                 },
                                 child: const Text(
-                                  "เข้าสู่ระบบ",
+                                  "Log In",
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontFamily: 'NotoSansThai-Regular'),
@@ -121,7 +121,7 @@ class _CustomerState extends State<Customer> {
                                   }));
                                 },
                                 child: const Text(
-                                  "สมัครสมาชิก",
+                                  "Subscribe",
                                   style: TextStyle(
                                     fontSize: 22,
                                     fontFamily: 'NotoSansThai-Regular',

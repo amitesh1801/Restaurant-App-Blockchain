@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => Center(
               // ignore: deprecated_member_use
               child: ElevatedButton(
-                child: const Text("Restaurant"),
+                child: const Text("RESTAURANT"),
                 onPressed: () => {
                   Navigator.push(
                       context,
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => Center(
               // ignore: deprecated_member_use
               child: ElevatedButton(
-                child: const Text("customer"),
+                child: const Text("CUSTOMER"),
                 onPressed: () => {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Customer()))
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) => Center(
               // ignore: deprecated_member_use
               child: ElevatedButton(
-                child: const Text("Rider-Provider"),
+                child: const Text("RIDER"),
                 onPressed: () => {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Rider()))
