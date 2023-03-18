@@ -37,7 +37,7 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
   late Web3Client ethClient;
   bool data = false;
   final myAddress =
-      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //หมายเลขกระเป๋าตัง Rider
+      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; // Wallet number Rider
   @override
   void initState() {
     super.initState();
@@ -70,7 +70,7 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ส่งคำสั่งซื้อ",
+            "Send Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -101,7 +101,7 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
                       Container(
                         margin: EdgeInsets.only(left: 10, top: 10),
                         child: Text(
-                          "ลูกค้า",
+                          "Customer",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -161,7 +161,7 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
                   Container(
                     margin: EdgeInsets.only(left: 10, top: 10),
                     child: Text(
-                      "รายการอาหาร",
+                      "Food Items",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -273,10 +273,9 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
                     }
 
                     // print(widget.dataId);
-                    // //เรียกใช้ ฟังก์ชั้นรับออเดอร์
                     deliveryDateFail(context);
                     print(deliveryDateFail.runtimeType);
-                    print("ส่งอาหารไม่สำเร็จ");
+                    print("Failed to Deliver Food");
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return RiderFinish(
@@ -286,7 +285,7 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
                     }));
                   },
                   child: const Text(
-                    "ส่งอาหารไม่สำเร็จ",
+                    "Failed to Deliver Food",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
@@ -326,10 +325,10 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
                     }
 
                     // print(widget.dataId);
-                    // //เรียกใช้ ฟังก์ชั้นรับออเดอร์
+                    // 
                     deliveryDate(context);
                     print(deliveryDate.runtimeType);
-                    print("ส่งอาหารแล้ว");
+                    print("Food Delivered");
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return RiderFinish(
@@ -339,7 +338,7 @@ class _RiderDeliveryDateState extends State<RiderDeliveryDate> {
                     }));
                   },
                   child: const Text(
-                    "ส่งอาหารสำเร็จ",
+                    "Food Delivery",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
