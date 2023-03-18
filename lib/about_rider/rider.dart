@@ -118,7 +118,7 @@ class _RiderState extends State<Rider> {
                                   return const RiderRegister();
                                 }));
                               },
-                              child: const Text("สมัครสมาชิก",
+                              child: const Text("Subscribe",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular',
