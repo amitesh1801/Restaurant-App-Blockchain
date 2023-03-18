@@ -112,7 +112,7 @@ class _CustomerFormState extends State<CustomerForm> {
                                   keyboardType: TextInputType.text,
                                   decoration: const InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "ที่อยู่ลูกค้า",
+                                      hintText: "Customer Address",
                                       hintStyle: TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'NotoSansThai-Regular',
