@@ -64,7 +64,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "แก้ไขข้อมูลส่วนตัว",
+            "Edit personal information",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 189,
@@ -109,7 +109,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "ชื่อผู้ใช้งาน",
+                      "Username",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -137,7 +137,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "ชื่อพนักงานขนส่งอาหาร",
+                          hintText: "Name of food delivery worker",
                         ),
                       ),
                     ),
@@ -145,7 +145,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                       height: 10,
                     ),
                     const Text(
-                      "เบอร์โทรศัพท์",
+                      "Telephone Number",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -168,7 +168,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                         controller: riderTelController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          hintText: "เบอร์โทรศัพท์",
+                          hintText: "Telephone Number",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -181,7 +181,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                       height: 10,
                     ),
                     const Text(
-                      "ยี่ห้อรถ",
+                      "Vehicle Brand",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -204,7 +204,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                         controller: riderCarModelController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "ยี่ห้อรถ",
+                          hintText: "Vehicle Brand",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -217,7 +217,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                       height: 10,
                     ),
                     const Text(
-                      "หมายเลขทะเบียนรถ",
+                      "Vehicle registration number",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -240,7 +240,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                         controller: riderlicensePlateController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "หมายเลขทะเบียนรถ",
+                          hintText: "Vehicle registration number",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -288,7 +288,7 @@ class _RiderEditInfoState extends State<RiderEditInfo> {
                 Navigator.pop(context);
               },
               child: const Text(
-                "ยืนยัน",
+                "Confirm",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
