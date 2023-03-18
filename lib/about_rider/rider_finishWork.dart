@@ -30,7 +30,7 @@ class _RiderFinishState extends State<RiderFinish> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "สรุปคำสั่งซื้อ ",
+            "Order Summary",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 165,
@@ -56,7 +56,7 @@ class _RiderFinishState extends State<RiderFinish> {
                   Container(
                     margin: const EdgeInsets.only(left: 10, top: 10),
                     child: const Text(
-                      "รายได้ของคุณ",
+                      "Your Income",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -86,7 +86,7 @@ class _RiderFinishState extends State<RiderFinish> {
                   Container(
                     margin: const EdgeInsets.only(left: 10, top: 10),
                     child: const Text(
-                      "รายการอาหาร",
+                      "Food Items",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -158,7 +158,7 @@ class _RiderFinishState extends State<RiderFinish> {
                       Container(
                         margin: const EdgeInsets.only(left: 10, top: 10),
                         child: const Text(
-                          "ราคาอาหาร",
+                          "Food Price",
                           style: TextStyle(
                               fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -179,7 +179,7 @@ class _RiderFinishState extends State<RiderFinish> {
                       Container(
                         margin: const EdgeInsets.only(left: 10, top: 10),
                         child: const Text(
-                          "ค่าจัดส่ง",
+                          "Shipping Cost",
                           style: TextStyle(
                               fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -214,7 +214,7 @@ class _RiderFinishState extends State<RiderFinish> {
                       Container(
                         margin: const EdgeInsets.only(left: 10, top: 10),
                         child: const Text(
-                          "ราคาทั้งหมด",
+                          "Total Price",
                           style: TextStyle(
                               fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -284,7 +284,7 @@ class _RiderFinishState extends State<RiderFinish> {
                                 ),
                                 Container(
                                   child: const Text(
-                                    "เสร็จสิ้น",
+                                    "Finish",
                                     style: TextStyle(
                                         fontSize: 40,
                                         fontWeight: FontWeight.bold,
@@ -300,7 +300,7 @@ class _RiderFinishState extends State<RiderFinish> {
                     });
               },
               child: const Text(
-                "จบงานจัดส่งอาหาร",
+                "Delivery Completed",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
