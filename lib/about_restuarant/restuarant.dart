@@ -16,7 +16,7 @@ class _RestuarantState extends State<Restuarant> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 191, 64, 1),
       // appBar: AppBar(
-      //   title: const Text("ร้านอาหาร"),
+      //   title: const Text("restaurant"),
       // ),
       body: SingleChildScrollView(
         child: Column(
