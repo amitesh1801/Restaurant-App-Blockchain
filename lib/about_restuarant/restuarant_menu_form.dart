@@ -34,7 +34,7 @@ class _MenuFormState extends State<MenuForm> {
         image = imageTemporary;
       });
     } on PlatformException catch (e) {
-      print("failed to pick image: $e");
+      print("Failed to Pick Image: $e");
     }
   }
 
