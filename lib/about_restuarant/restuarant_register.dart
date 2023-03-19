@@ -77,7 +77,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                             margin: const EdgeInsets.only(
                                                 top: 80, left: 15),
                                             child: const Text(
-                                              "Subscribe",
+                                              "Register",
                                               style: TextStyle(
                                                   fontSize: 35,
                                                   fontFamily:
@@ -224,7 +224,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                                                     .circular(
                                                                         15))),
                                                 child: const Text(
-                                                  "Subscribe",
+                                                  "Register",
                                                   style: TextStyle(
                                                       fontSize: 22,
                                                       fontFamily:
