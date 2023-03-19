@@ -19,19 +19,19 @@ class RiderHistory extends StatefulWidget {
 class _RiderHistoryState extends State<RiderHistory> {
   var formatter;
   bool viewVisible = true;
-  List<dynamic> formated = []; //เวลาลูกค้าสั่งอาหาร
-  List<dynamic> formatedRes = []; //เวลาร้านรับคำสั่งซื้อ
-  List<dynamic> formatedResOrderFinish = []; //เวลาร้านอาหารทำอาหารเสร็จ
-  List<dynamic> formatedRider = []; //เวลาพนักงานขนส่งอาหารรับคำสั่งซื้อ
+  List<dynamic> formated = []; //when customers order food
+  List<dynamic> formatedRes = []; //Shop accepting orders
+  List<dynamic> formatedResOrderFinish = []; //When the restaurant finishes cooking
+  List<dynamic> formatedRider = []; //When food delivery workers take orders
   List<dynamic> formatedRiderRecieve =
-      []; //เวลาพนักงานขนส่งอาหารรับอาหารจากร้าน
+      []; //When food delivery staff pick up food from the restaurant
   List<dynamic> formatedRiderDelivery =
-      []; //เวลาพนักงานขนส่งอาหารเดินทางถึงบ้านลูกค้า
+      []; //When the food delivery staff arrives at the customer's house
   List<dynamic> formatedRiderDeliveryDate =
-      []; //เวลาาพนักงานขนส่งอาหารส่งอาหารให้ลูกค้า
+      []; //When food delivery staff deliver food to customers
 
-  List<dynamic> timeRes = []; //ออเดอร์ทั้งหมดของร้านอาหาร
-  List<dynamic> timeRider = []; //ออเดอร์ทั้งหมดของพนักงานขนส่งอาหาร
+  List<dynamic> timeRes = []; //All restaurant orders
+  List<dynamic> timeRider = []; //All orders of food delivery workers
   List<dynamic> dataOrderCus = [];
   List<dynamic> dataOrderRes = [];
   List<dynamic> dataOrderRider = [];
@@ -46,7 +46,7 @@ class _RiderHistoryState extends State<RiderHistory> {
   late Client httpClient;
   late Web3Client ethClient;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตัง
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; 
   @override
   void initState() {
     Intl.defaultLocale = 'th';
@@ -106,9 +106,9 @@ class _RiderHistoryState extends State<RiderHistory> {
       resultOrderRider.add(result2);
       resultOrderAddress.add(result3);
 
-      print("ลูกค้า${resultOrderCus}");
-      print("ร้านอาหาร${resultOrderRes}");
-      print("ไรเดอร์${resultOrderRider}");
+      print("Customer${resultOrderCus}");
+      print("Restaurant${resultOrderRes}");
+      print("Rider${resultOrderRider}");
 
       data = true;
     }
@@ -129,33 +129,33 @@ class _RiderHistoryState extends State<RiderHistory> {
       }
     }
 
-    //แปลงเวลา
+    //Convert Time
     for (int i = 0; i < dataFinalMenuHisCus.length; i++) {
-      //เวลาสั่งอาหารของลูกค้า
+      //customer order time
       DateTime date = DateTime.fromMillisecondsSinceEpoch(
           int.parse(dataFinalMenuHisCus[i][8].toString()) * 1000);
 
-      //เวลารับคำสั่งซื้อของร้านอาหาร
+      //Restaurant order pick-up time
       DateTime dateRes = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRes[i][3].toString()) * 1000);
 
-      //เวลาเตรียมอาหารเสร็จสิ้นของร้านอาหาร
+      //Restaurant preparation time
       DateTime dateResOrderFinish = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRes[i][5].toString()) * 1000);
 
-      //เวลารับคำสั่งซื้อของหนัพงานขนส่งอาหาร
+      //Order acceptance time of food delivery worker
       DateTime dateRider = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][3].toString()) * 1000);
 
-      //เวลารับอาหารจากร้านของพนักงานขนส่งอาหาร
+      //Time to pick up food from the restaurant of a food delivery worker
       DateTime dateRiderRecieve = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][5].toString()) * 1000);
 
-      //เวลาถึงบ้านลูกค้าของพนักงานขนส่งอาหาร
+      //time to the customer's home of the food delivery worker
       DateTime dateRiderDelivery = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][6].toString()) * 1000);
 
-      //เวลาส่งอาหารให้ลูกค้า
+      //Time to deliver food to customers
       DateTime dateRiderDeliveryDate = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][7].toString()) * 1000);
 
@@ -168,9 +168,9 @@ class _RiderHistoryState extends State<RiderHistory> {
       formatedRiderDeliveryDate.add(formatter.format(dateRiderDeliveryDate));
     }
 
-    print("ออเดอร์ลูกค้า${dataFinalMenuHisCus}");
-    print("ออเดอร์ร้านอาหาร${timeRes}");
-    print("เวลา${formatedResOrderFinish}");
+    print("Customer order${dataFinalMenuHisCus}");
+    print("Restaurant order${timeRes}");
+    print("Time${formatedResOrderFinish}");
   }
 
   @override
@@ -184,7 +184,7 @@ class _RiderHistoryState extends State<RiderHistory> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ประวัติคำสั่งซื้อ",
+            "Order History",
             style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 180,
@@ -202,7 +202,7 @@ class _RiderHistoryState extends State<RiderHistory> {
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 20, left: 20),
               child: const Text(
-                "คำสั่งซื้อล่าสุด :",
+                "Last order :",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,
@@ -303,7 +303,7 @@ class _RiderHistoryState extends State<RiderHistory> {
                                   ),
                                   Container(
                                     child: Text(
-                                      "฿${dataFinalMenuHisCus[index][4].toString()}",
+                                      "₹${dataFinalMenuHisCus[index][4].toString()}",
                                       style: const TextStyle(
                                           fontSize: 18,
                                           fontFamily: 'NotoSansThai-Regular'),
