@@ -20,10 +20,10 @@ class CustomerInfo extends StatefulWidget {
 
 class _CustomerInfoState extends State<CustomerInfo> {
   var firebaseUser = FirebaseAuth
-      .instance.currentUser; //เก็บ uid สำหรับ account ที่กำลัง login
-  final auth = FirebaseAuth.instance; //ใช้ตัวแปรนี้สำหรับ logout
+      .instance.currentUser; //uid account login
+  final auth = FirebaseAuth.instance; // logout
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  //UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +47,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ข้อมูลส่วนตัว",
+            "Personal Information",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -58,7 +58,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
           ),
         ),
       ),
-      // query ข้อมูลจาก firebase ไปแสดงเป็น listview
+      // query firebase listview
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection("customers")
@@ -211,7 +211,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                 width: 20,
                               ),
                               Text(
-                                "บัญชี",
+                                "Account",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -249,7 +249,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                 width: 20,
                               ),
                               Text(
-                                "ประวัติการสั่งซื้อ",
+                                "Order History",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -294,7 +294,7 @@ class _CustomerInfoState extends State<CustomerInfo> {
                                 width: 20,
                               ),
                               Text(
-                                "ออกจากระบบ",
+                                "Log Out",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),

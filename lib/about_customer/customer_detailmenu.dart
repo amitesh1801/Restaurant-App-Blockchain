@@ -1,11 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors, avoid_unnecessary_containers, sized_box_for_whitespace
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projectfood/about_customer/customer_viewmenu.dart';
 
 class DetailMenu extends StatefulWidget {
-  //ประกาศ Structor เพื่อรับค่าจากหน้าอื่น
+ 
   final String menuId;
   final String menuName;
   final String resId;
@@ -29,7 +28,7 @@ class DetailMenu extends StatefulWidget {
 }
 
 class _DetailMenuState extends State<DetailMenu> {
-  int quantity = 1; //เป็นค่า state ไว้บวกเพิ่มจำนวน
+  int quantity = 1; 
   late var list = [
     DetailMenu(
       menuName: widget.menuName,
@@ -41,9 +40,9 @@ class _DetailMenuState extends State<DetailMenu> {
       digitalWallet: widget.digitalWallet,
       uriPicture: widget.uriPicture,
     )
-  ]; // list ข้อมูลของรายละเอียดเมนู
+  ]; // list 
 
-  //เป็นส่วนของ UI แสดงผลของหน้าจอ
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +59,7 @@ class _DetailMenuState extends State<DetailMenu> {
               size: 32,
             ),
             onPressed: () {
-              // action กดปุ่มแล้วเปลี่ยนหน้า
+              // action
               Navigator.pop(context, CupertinoPageRoute(builder: (context) {
                 return const CustomerViewMenu(
                   menuId: '',
@@ -80,7 +79,7 @@ class _DetailMenuState extends State<DetailMenu> {
           title: Container(
             alignment: Alignment.center,
             child: const Text(
-              "รายละเอียดอาหาร",
+              "Food Details",
               style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Medium'),
             ),
             width: 180,
@@ -138,7 +137,7 @@ class _DetailMenuState extends State<DetailMenu> {
                           margin: const EdgeInsets.only(left: 20, top: 20),
                           alignment: Alignment.centerLeft,
                           child: const Text(
-                            "หมายเหตุถึงร้านอาหาร",
+                            "Note to the Restaurant",
                             style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'NotoSansThai-Regular'),
@@ -147,7 +146,7 @@ class _DetailMenuState extends State<DetailMenu> {
                         Container(
                           margin: const EdgeInsets.only(left: 10, top: 25),
                           child: const Text(
-                            "ไม่จำเป็นต้องระบุ",
+                            "Optional",
                             style: TextStyle(
                                 fontSize: 14,
                                 fontFamily: 'NotoSansThai-Regular',
@@ -171,7 +170,7 @@ class _DetailMenuState extends State<DetailMenu> {
                       margin: const EdgeInsets.only(left: 20, right: 20),
                       child: const TextField(
                         decoration:
-                            InputDecoration(labelText: "ระบุรายละเอียดคำขอ"),
+                            InputDecoration(labelText: "Specify the request details."),
                       ),
                     ),
                     Container(
@@ -280,7 +279,7 @@ class _DetailMenuState extends State<DetailMenu> {
                   }));
                 },
                 child: const Text(
-                  "เพิ่มในตะกร้า",
+                  "Add to Cart",
                   style: TextStyle(
                       fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                 )),

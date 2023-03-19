@@ -13,7 +13,7 @@ class Customer extends StatefulWidget {
 }
 
 class _CustomerState extends State<Customer> {
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  //UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +121,7 @@ class _CustomerState extends State<Customer> {
                                   }));
                                 },
                                 child: const Text(
-                                  "Subscribe",
+                                  "Register",
                                   style: TextStyle(
                                     fontSize: 22,
                                     fontFamily: 'NotoSansThai-Regular',

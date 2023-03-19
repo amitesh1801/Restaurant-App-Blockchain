@@ -318,7 +318,7 @@ class _CartState extends State<Cart> {
                             children: [
                               // ignore: prefer_const_constructors
                               Text(
-                                "ราคาทั้งหมด",
+                                "Total Price",
                                 style: const TextStyle(
                                     fontSize: 18,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -360,9 +360,9 @@ class _CartState extends State<Cart> {
                   String status = "0";
 
                   var firebaseUser = FirebaseAuth.instance
-                      .currentUser; //เก็บ uid สำหรับอ้างถึง account ที่กำลัง login อยู่
+                      .currentUser; //uid account login 
 
-                  //query ข้อมูลจาก Firebase
+                  //query Firebase
                   var result = await FirebaseFirestore.instance
                       .collection("customers")
                       .where("customer_id", isEqualTo: firebaseUser!.uid)
@@ -386,7 +386,7 @@ class _CartState extends State<Cart> {
                       );
                     }));
 
-                    // ฟังก์ชัน ส่งค่าเข้า SmartContract
+                    //  SmartContract
                     insertOrder(BuildContext context) async {
                       var prices = BigInt.from((widget.menuPrice *
                               widget.quantity) +

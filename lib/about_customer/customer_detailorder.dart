@@ -12,7 +12,7 @@ import 'package:projectfood/about_customer/customer_home.dart';
 import 'package:web3dart/web3dart.dart' as web3dart;
 
 class DetailOrder extends StatefulWidget {
-  //ประกาศ Constructor เพื่อรับค่าจากหน้าอื่น
+  
   final String digitalWallet;
   final String customerName;
   final String customerTel;
@@ -50,25 +50,21 @@ class _DetailOrderState extends State<DetailOrder> {
   bool statusShipping = false;
   bool statusDelivary = false;
 
-  List<dynamic> _statusCooking =
-      []; //เก็บข้อมูลสถานะการทำอาหารของร้านอาหารที่อยู่ในบล็อกเชน
-  List<dynamic> _statusShipping =
-      []; //เก็บข้อมูลสถานะการรับอาหารของพนักงานขนส่งอาหารที่อยู่ในบล็อกเชน
-  List<dynamic> _statusDelivery =
-      []; //เก็บข้อมูลสถานะการทำส่งอาหารของพนักงานขนส่งอาหารที่อยู่ในบล็อกเชน
-  List<dynamic> _statusAccept =
-      []; //เก็บข้อมูลสถานะการรับอาหารของร้านอาหารที่อยู่ใยบล็อกเชน
+  List<dynamic> _statusCooking = []; 
+  List<dynamic> _statusShipping = []; 
+  List<dynamic> _statusDelivery = []; 
+  List<dynamic> _statusAccept = []; 
   List<dynamic> amoutMenu = [];
 
   late Timer timer;
-  bool isShow = true; //boolean มีไว้เพื่อเป็นเงื่อนไขในการเเสดง widget
+  bool isShow = true; 
 
   var myData;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตัง
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; 
   @override
 
-  //Set ค่าตั้งต้นในการเชื่อมต่อ Infura
+ 
   void initState() {
     super.initState();
     httpClient = Client();
@@ -76,14 +72,14 @@ class _DetailOrderState extends State<DetailOrder> {
         "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3",
         httpClient);
 
-    // Timer query ข้อมูลทุกๆ 15 วินาที
+    // Timer query 
     Timer.periodic(Duration(seconds: 15), (timer) {
       getOrderCustomer(myAddress);
       if (statusDelivary == true) {
         timer.cancel();
       }
 
-      //เป็นเงื่อนไขในการหยุด query
+      
       if (statusCookingFail == true) {
         timer.cancel();
       }
@@ -101,7 +97,7 @@ class _DetailOrderState extends State<DetailOrder> {
     return contract;
   }
 
-  //เรียกใช้การ query ข้อมูลจาก smartcontract
+  //query smartcontract
   Future<List<dynamic>> query(String functionName, List<dynamic> args) async {
     final contract = await loadContract();
     final ethFunction = contract.function(functionName);
@@ -111,12 +107,12 @@ class _DetailOrderState extends State<DetailOrder> {
     return result;
   }
 
-  //ฟังก์ชัน query ข้อมูลต่าง ๆ มาเก็บไว้ในตัวแปร
+  //
   Future<void> getOrderCustomer(String targetAddress) async {
-    //query จำนวนเมนูทั้งหมด
+    //query 
     amoutMenu = await query("nextId", []);
 
-    //query ข้อมูลของฟังก์ชัน readOrderRider จากบล็อกเชน
+
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result = await query("readOrderRider", [BigInt.from(i)]);
       _statusCooking.add(result);
@@ -127,7 +123,7 @@ class _DetailOrderState extends State<DetailOrder> {
       print("${_statusCooking.length}");
     }
 
-    //query ข้อมูลของฟังก์ชัน readOrderRestaurant จากบล็อกเชน
+  
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result =
           await query("readOrderRestaurant", [BigInt.from(i)]);
@@ -135,14 +131,14 @@ class _DetailOrderState extends State<DetailOrder> {
       print(_statusAccept.length);
     }
 
-    int amountOrder = _statusCooking.length - 1; //นับจำนวนเมนูในบล็อกเชน
+    int amountOrder = _statusCooking.length - 1; 
 
-    print("สุทธิ${amountOrder}");
-    print("สถานะทำอาหาร${_statusCooking}");
-    print("สถานะกำลังจัดส่ง${_statusShipping}");
-    print("สถานะส่งอาหารแล้ว${_statusDelivery}");
+    print("Net${amountOrder}");
+    print("Cooking Status${_statusCooking}");
+    print("Delivery Status${_statusShipping}");
+    print("Food Delivery Status${_statusDelivery}");
 
-//ในกรณีอาหารหมดให้แสดง popup และแสดงคำว่าอาหารหมด
+
     if (_statusAccept[amountOrder][4].toString() == 2.toString()) {
       setState(() {
         statusCookingFail = true;
@@ -169,7 +165,7 @@ class _DetailOrderState extends State<DetailOrder> {
                       children: [
                         Container(
                           child: const Text(
-                            "อาหารหมด",
+                            "Out of Food",
                             style: TextStyle(
                                 fontSize: 40,
                                 fontWeight: FontWeight.bold,
@@ -186,12 +182,12 @@ class _DetailOrderState extends State<DetailOrder> {
       });
     }
 
-    //เปลี่ยนสี status การติดตามอาหารของหน้าจอลูกค้า
+   
     if (_statusCooking[amountOrder][3].toString() != 0.toString()) {
       Timer(Duration(seconds: 1), () {
         setState(() {
           statusCooking = true;
-          print("กำลังทำอาหาร");
+          print("Cooking");
         });
       });
     }
@@ -199,7 +195,7 @@ class _DetailOrderState extends State<DetailOrder> {
       Timer(Duration(seconds: 1), () {
         setState(() {
           statusShipping = true;
-          print("กำลังจัดส่ง");
+          print("Delivery");
         });
       });
     }
@@ -207,14 +203,14 @@ class _DetailOrderState extends State<DetailOrder> {
         _statusDelivery[amountOrder][8].toString() == '2') {
       setState(() {
         statusDelivary = true;
-        print("ส่งสำเร็จ");
+        print("Sent Successfully");
       });
     }
 
     data = true;
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -227,7 +223,7 @@ class _DetailOrderState extends State<DetailOrder> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "คำสั่งซื้อ",
+            "Order",
             style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 180,
@@ -246,7 +242,7 @@ class _DetailOrderState extends State<DetailOrder> {
           children: [
             Container(
               child: Text(
-                "เวลารออาหารประมาณ",
+                "Estimated Waiting Time",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               ),
@@ -265,7 +261,7 @@ class _DetailOrderState extends State<DetailOrder> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    "สั่งอาหาร",
+                    "Order Food",
                     style: TextStyle(
                         fontSize: 14, fontFamily: 'NotoSansThai-Regular'),
                   ),
@@ -278,7 +274,7 @@ class _DetailOrderState extends State<DetailOrder> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    "ทำอาหาร",
+                    "Cooking",
                     style: TextStyle(
                         fontSize: 14, fontFamily: 'NotoSansThai-Regular'),
                   ),
@@ -294,7 +290,7 @@ class _DetailOrderState extends State<DetailOrder> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    "กำลังจัดส่ง",
+                    "Delivery",
                     style: TextStyle(
                         fontSize: 14, fontFamily: 'NotoSansThai-Regular'),
                   ),
@@ -310,7 +306,7 @@ class _DetailOrderState extends State<DetailOrder> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    "ส่งอาหารแล้ว",
+                    "Food Delivered",
                     style: TextStyle(
                         fontSize: 14, fontFamily: 'NotoSansThai-Regular'),
                   ),
@@ -339,7 +335,7 @@ class _DetailOrderState extends State<DetailOrder> {
                 children: [
                   Container(
                     child: Text(
-                      "สรุปคำสั่งซื้อ",
+                      "Order Summary",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -402,7 +398,7 @@ class _DetailOrderState extends State<DetailOrder> {
                     children: [
                       Container(
                         child: Text(
-                          "รวมค่าอาหารทั้งหมด",
+                          "All Food Included",
                           style: TextStyle(
                               fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -421,7 +417,7 @@ class _DetailOrderState extends State<DetailOrder> {
                     children: [
                       Container(
                         child: Text(
-                          "ค่าจัดส่ง",
+                          "Shipping Cost",
                           style: TextStyle(
                               fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -451,7 +447,7 @@ class _DetailOrderState extends State<DetailOrder> {
                     children: [
                       Container(
                         child: Text(
-                          "ราคาทั้งหมด",
+                          "Total Price",
                           style: TextStyle(
                               fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -496,30 +492,30 @@ class _DetailOrderState extends State<DetailOrder> {
                     var menuID = int.parse(amoutMenu[0].toString()) - 1;
 
                     var firebaseUser = FirebaseAuth.instance
-                        .currentUser; //เก็บ uid สำหรับ account ที่กำลัง login
+                        .currentUser; 
 
-                    //query ข้อมูลจาก firebase
+                    //query  firebase
                     var result = await FirebaseFirestore.instance
                         .collection("customers")
                         .where("customer_id", isEqualTo: firebaseUser!.uid)
                         .get();
                     // ignore: avoid_function_literals_in_foreach_calls, non_constant_identifier_names
                     result.docs.forEach((customer_data) {
-                      //ฟังก์ชันสำหรับการให้ลูกค้ากดยืนยันการได้รับอาหารจากพนักงานขนส่งอาหาร
+                      
                       customerAcceptFail(BuildContext context) async {
                         web3dart.EthPrivateKey credentials = web3dart
                             .EthPrivateKey.fromHex(customer_data
                                 .data()[
-                            "private_digital_wallet"]); //แปลงข้อมูล privatekey ของร้านอาหารให้อยู่ใน type ที่ใช้งานได้กับบล็อกเชน
+                            "private_digital_wallet"]); 
                         var apiurl =
-                            "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3"; //เก็บ url ของ infura
+                            "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3"; 
                         var ethClient = web3dart.Web3Client(apiurl, httpClient);
                         web3dart.DeployedContract contract =
                             await loadContract(); //load smartcontract
                         final ethFunction = contract.function(
-                            "customerAccept"); //set ชื่อฟังก์ชันที่จะเชื่อมต่อกับ smartcontract
+                            "customerAccept"); //set  smartcontract
 
-                        //ส่งข้อมูลเข้า smartcontract ผ่าน parameter
+                        //smartcontract  parameter
                         var result = await ethClient.sendTransaction(
                             credentials,
                             web3dart.Transaction.callContract(
@@ -535,7 +531,7 @@ class _DetailOrderState extends State<DetailOrder> {
                         return result;
                       }
 
-                      //เรียกใช้ฟังก์ชัน
+                      
                       customerAcceptFail(context);
                       print(customerAcceptFail(context).runtimeType);
                     });
@@ -571,7 +567,7 @@ class _DetailOrderState extends State<DetailOrder> {
                                       ),
                                       Container(
                                         child: const Text(
-                                          "เสร็จสิ้น",
+                                          "Finished",
                                           style: TextStyle(
                                               fontSize: 40,
                                               fontWeight: FontWeight.bold,
@@ -590,7 +586,7 @@ class _DetailOrderState extends State<DetailOrder> {
                     });
                   },
                   child: const Text(
-                    "ยังไม่ได้รับอาหาร",
+                    "Food not received yet",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
@@ -607,30 +603,30 @@ class _DetailOrderState extends State<DetailOrder> {
                     var menuID = int.parse(amoutMenu[0].toString()) - 1;
 
                     var firebaseUser = FirebaseAuth.instance
-                        .currentUser; //เก็บ uid สำหรับ account ที่กำลัง login
+                        .currentUser; 
 
-                    //query ข้อมูลจาก firebase
+                    //query firebase
                     var result = await FirebaseFirestore.instance
                         .collection("customers")
                         .where("customer_id", isEqualTo: firebaseUser!.uid)
                         .get();
                     // ignore: avoid_function_literals_in_foreach_calls, non_constant_identifier_names
                     result.docs.forEach((customer_data) {
-                      //ฟังก์ชันสำหรับการให้ลูกค้ากดยืนยันการได้รับอาหารจากพนักงานขนส่งอาหาร
+                      
                       customerAccept(BuildContext context) async {
                         web3dart.EthPrivateKey credentials = web3dart
                             .EthPrivateKey.fromHex(customer_data
                                 .data()[
-                            "private_digital_wallet"]); //แปลงข้อมูล privatekey ของร้านอาหารให้อยู่ใน type ที่ใช้งานได้กับบล็อกเชน
+                            "private_digital_wallet"]);
                         var apiurl =
                             "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3"; //เก็บ url ของ infura
                         var ethClient = web3dart.Web3Client(apiurl, httpClient);
                         web3dart.DeployedContract contract =
                             await loadContract(); //load smartcontract
                         final ethFunction = contract.function(
-                            "customerAccept"); //set ชื่อฟังก์ชันที่จะเชื่อมต่อกับ smartcontract
+                            "customerAccept"); //set  smartcontract
 
-                        //ส่งข้อมูลเข้า smartcontract ผ่าน parameter
+                        //ส่งข้อมูลเข้า smartcontract parameter
                         var result = await ethClient.sendTransaction(
                             credentials,
                             web3dart.Transaction.callContract(
@@ -646,11 +642,11 @@ class _DetailOrderState extends State<DetailOrder> {
                         return result;
                       }
 
-                      //เรียกใช้ฟังก์ชัน
+                      
                       customerAccept(context);
                       print(customerAccept(context).runtimeType);
                     });
-                    //show dialog และแสดงข้อความว่าเสร็จสิ้น
+                    //show dialog
                     setState(() {
                       showDialog(
                           context: context,
@@ -683,7 +679,7 @@ class _DetailOrderState extends State<DetailOrder> {
                                       ),
                                       Container(
                                         child: const Text(
-                                          "เสร็จสิ้น",
+                                          "Finished",
                                           style: TextStyle(
                                               fontSize: 40,
                                               fontWeight: FontWeight.bold,
@@ -707,7 +703,7 @@ class _DetailOrderState extends State<DetailOrder> {
                     // });
                   },
                   child: const Text(
-                    "ได้รับอาหารแล้ว",
+                    "Food Received",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),

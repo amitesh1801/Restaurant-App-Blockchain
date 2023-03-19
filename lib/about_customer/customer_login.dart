@@ -79,7 +79,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                                             margin: const EdgeInsets.only(
                                                 top: 80, left: 15),
                                             child: const Text(
-                                              "Log-In",
+                                              "Log In",
                                               style: TextStyle(
                                                   fontSize: 35,
                                                   fontFamily:
@@ -252,7 +252,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                                                           'NotoSansThai-Regular'),
                                                 ),
                                                 onPressed: () async {
-                                                  //เป็นการ check ว่าผ่านเงื่อนไขการกรอกข้อมูลหรือไม่
+                                                  //check 
                                                   if (formKey.currentState!
                                                       .validate()) {
                                                     formKey.currentState!
@@ -332,7 +332,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                                       },
                                       child: Container(
                                         child: const Text(
-                                          " Subscribe",
+                                          "Register",
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Color.fromRGBO(
