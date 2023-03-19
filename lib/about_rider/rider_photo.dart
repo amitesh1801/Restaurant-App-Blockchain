@@ -79,7 +79,7 @@ class _RiderPhotoState extends State<RiderPhoto> {
         automaticallyImplyLeading: true,
         title: Container(
           alignment: Alignment.center,
-          child: const Text("ถ่ายรูป"),
+          child: const Text("Take a Photo"),
           width: 165,
           height: 37,
           decoration: BoxDecoration(
