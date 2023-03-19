@@ -86,7 +86,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "order",
+            "Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,

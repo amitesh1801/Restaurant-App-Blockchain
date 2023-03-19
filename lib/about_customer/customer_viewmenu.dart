@@ -8,7 +8,7 @@ import 'package:projectfood/about_customer/customer_detailmenu.dart';
 import 'package:projectfood/about_customer/customer_home.dart';
 
 class CustomerViewMenu extends StatefulWidget {
-  //ประกาศ Constructor เพื่อนำมารับค่าจากหน้าอื่น
+  //Constructor 
   final String resId;
   final String resName;
   final String resTel;
@@ -48,7 +48,7 @@ class _CustomerViewMenuState extends State<CustomerViewMenu> {
           }));
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+//UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +71,7 @@ class _CustomerViewMenuState extends State<CustomerViewMenu> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ร้านอาหาร",
+            "Restaurant",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -213,7 +213,7 @@ class _CustomerViewMenuState extends State<CustomerViewMenu> {
                                   margin: const EdgeInsets.only(
                                       left: 20, top: 20, bottom: 10),
                                   child: const Text(
-                                    "รายการอาหาร",
+                                    "Menu",
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,

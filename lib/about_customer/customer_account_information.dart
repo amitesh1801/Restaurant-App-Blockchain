@@ -18,11 +18,11 @@ class AccountInfo extends StatefulWidget {
 
 class _AccountInfoState extends State<AccountInfo> {
   TextEditingController digitalWalletController =
-      TextEditingController(); //รับค่าที่ส่งมา
+      TextEditingController(); 
   TextEditingController privateWalletController =
-      TextEditingController(); //รับค่าที่ส่งมา
+      TextEditingController(); 
 
-// Set ค่าที่รับมาให้กับตัวแปรที่ประกาศไว้
+// Set
   @override
   void initState() {
     super.initState();
@@ -30,7 +30,7 @@ class _AccountInfoState extends State<AccountInfo> {
     privateWalletController.text = widget.privateWallet;
   }
 
-//เป็นส่วนของ UI แสดงผลของหน้าจอ
+// UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +54,7 @@ class _AccountInfoState extends State<AccountInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "บัญชีผู้ใช้งาน",
+            "Account",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 189,
@@ -136,7 +136,7 @@ class _AccountInfoState extends State<AccountInfo> {
                       ),
                     ),
                     const Text(
-                      "รหัสกระเป๋าเงินดิจิทัล",
+                      "Digital Wallet Code",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
