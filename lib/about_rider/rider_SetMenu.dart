@@ -39,7 +39,7 @@ class _RiderSetMenuState extends State<RiderSetMenu> {
   late Web3Client ethClient;
   bool data = false;
   final myAddress =
-      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //หมายเลขกระเป๋าตัง Rider
+      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //addressRider
   @override
   void initState() {
     super.initState();
@@ -72,7 +72,7 @@ class _RiderSetMenuState extends State<RiderSetMenu> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "คำสั่งซื้อ",
+            "Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 165,
@@ -217,7 +217,7 @@ class _RiderSetMenuState extends State<RiderSetMenu> {
                 }));
               },
               child: const Text(
-                "รับอาหาร",
+                "Get food",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),

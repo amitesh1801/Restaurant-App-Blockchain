@@ -47,7 +47,7 @@ class _RiderAccountInfoState extends State<RiderAccountInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "บัญชีผู้ใช้งาน",
+            "User Account",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 189,
@@ -96,7 +96,7 @@ class _RiderAccountInfoState extends State<RiderAccountInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "บัญชีกระเป๋าเงินดิจิทัล",
+                      "Digital Wallet Account",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -119,7 +119,7 @@ class _RiderAccountInfoState extends State<RiderAccountInfo> {
                         controller: digitalWalletController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "บัญชีกระเป๋าเงินดิจิทัล",
+                          hintText: "Digital wallet account",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -129,7 +129,7 @@ class _RiderAccountInfoState extends State<RiderAccountInfo> {
                       ),
                     ),
                     const Text(
-                      "รหัสกระเป๋าเงินดิจิทัล",
+                      "Digital Wallet Code",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -152,7 +152,7 @@ class _RiderAccountInfoState extends State<RiderAccountInfo> {
                         controller: privateWalletController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "รหัสกระเป๋าเงินดิจิทัล",
+                          hintText: "Digital wallet code ",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -186,7 +186,7 @@ class _RiderAccountInfoState extends State<RiderAccountInfo> {
       //         ),
       //         onPressed: () {},
       //         child: const Text(
-      //           "ยืนยัน",
+      //           "Confirm",
       //           style:
       //               TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
       //         )),
