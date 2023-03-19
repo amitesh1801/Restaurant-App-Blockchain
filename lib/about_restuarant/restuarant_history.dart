@@ -20,21 +20,21 @@ class ResHistory extends StatefulWidget {
 class _ResHistoryState extends State<ResHistory> {
   var formatter;
   bool viewVisible = true;
-  List<dynamic> formated = []; //เวลาลูกค้าสั่งอาหาร
-  List<dynamic> formatedRes = []; //เวลาร้านรับคำสั่งซื้อ
-  List<dynamic> formatedResOrderFinish = []; //เวลาร้านอาหารทำอาหารเสร็จ
-  List<dynamic> formatedRider = []; //เวลาพนักงานขนส่งอาหารรับคำสั่งซื้อ
+  List<dynamic> formated = []; 
+  List<dynamic> formatedRes = []; 
+  List<dynamic> formatedResOrderFinish = []; 
+  List<dynamic> formatedRider = []; 
   List<dynamic> formatedRiderRecieve =
-      []; //เวลาพนักงานขนส่งอาหารรับอาหารจากร้าน
+      []; 
   List<dynamic> formatedRiderDelivery =
-      []; //เวลาพนักงานขนส่งอาหารเดินทางถึงบ้านลูกค้า
+      []; 
   List<dynamic> formatedRiderDeliveryDate =
-      []; //เวลาาพนักงานขนส่งอาหารส่งอาหารให้ลูกค้า
+      []; 
 
-  List<dynamic> timeRes = []; //ออเดอร์ทั้งหมดของร้านอาหาร
-  List<dynamic> timeRider = []; //ออเดอร์ทั้งหมดของพนักงานขนส่งอาหาร
-  List<dynamic> dataFinalMenuHisCus = []; //เก็บออเดอร์ของลูกค้า
-  List<dynamic> resultOrderAddress = []; //เก็บ address ของผู้ใช้งาน
+  List<dynamic> timeRes = []; 
+  List<dynamic> timeRider = []; 
+  List<dynamic> dataFinalMenuHisCus = []; 
+  List<dynamic> resultOrderAddress = []; 
   List<dynamic> resultOrderCus = [];
   List<dynamic> resultOrderRes = [];
   List<dynamic> resultOrderRider = [];
@@ -43,9 +43,9 @@ class _ResHistoryState extends State<ResHistory> {
   late Client httpClient;
   late Web3Client ethClient;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตัง
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; 
 
-  //Set ค่าตั้งต้น
+  
   @override
   void initState() {
     super.initState();
@@ -57,13 +57,13 @@ class _ResHistoryState extends State<ResHistory> {
     httpClient = Client();
     ethClient = Web3Client(
         "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3",
-        httpClient); //เก็บ url infura
+        httpClient); 
 
-    //เรียกใช้ฟังก์ชัน
+    
     getOrderCustomer(myAddress);
     viewVisible = true;
 
-    //ให้ทำงานทุก ๆ 2 วินาที
+    
     Timer.periodic(Duration(seconds: 2), (Timer t) {
       void showWidget() {
         setState(() {
@@ -75,7 +75,7 @@ class _ResHistoryState extends State<ResHistory> {
     });
   }
 
-  //load smartcontract จากไฟล์ Json
+  
   Future<DeployedContract> loadContract() async {
     String abi = await rootBundle.loadString("lib/assets/abi.json");
     String contractAddress =
@@ -86,7 +86,7 @@ class _ResHistoryState extends State<ResHistory> {
     return contract;
   }
 
-  //ฟังก์ชันสำหรับ query ข้อมูลจากบล็อกเชน
+  
   Future<List<dynamic>> query(String functionName, List<dynamic> args) async {
     final contract = await loadContract();
     final ethFunction = contract.function(functionName);
@@ -96,11 +96,11 @@ class _ResHistoryState extends State<ResHistory> {
     return result;
   }
 
-  //query ข้อมูล
+  
   Future<void> getOrderCustomer(String targetAddress) async {
-    List<dynamic> amoutMenu = await query("nextId", []); //จำนวนออเดอร์ทั้งหมด
+    List<dynamic> amoutMenu = await query("nextId", []); 
 
-    //query ข้อมูลออเดอร์ของลูกค้า พนักงานขนส่งอาหาร และรายละเอียดของออเดอร์
+    
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result = await query("readOrderCustomer", [BigInt.from(i)]);
       List<dynamic> result1 =
@@ -113,14 +113,14 @@ class _ResHistoryState extends State<ResHistory> {
       resultOrderRider.add(result2);
       resultOrderAddress.add(result3);
 
-      print("customer${resultOrderCus}");
-      print("restaurant${resultOrderRes}");
-      print("rider${resultOrderRider}");
+      print("Customer${resultOrderCus}");
+      print("Restaurant${resultOrderRes}");
+      print("Rider${resultOrderRider}");
 
       data = true;
     }
 
-    //sort ลำดับออเดอร์จากมากไปน้อย
+    
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       if (resultOrderAddress[i][2].toString() ==
               widget.addressRes.toLowerCase() &&
@@ -137,33 +137,33 @@ class _ResHistoryState extends State<ResHistory> {
       }
     }
 
-    //แปลงเวลา
+    
     for (int i = 0; i < dataFinalMenuHisCus.length; i++) {
-      //เวลาสั่งอาหารของลูกค้า
+      
       DateTime date = DateTime.fromMillisecondsSinceEpoch(
           int.parse(dataFinalMenuHisCus[i][8].toString()) * 1000);
 
-      //เวลารับคำสั่งซื้อของร้านอาหาร
+      
       DateTime dateRes = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRes[i][3].toString()) * 1000);
 
-      //เวลาเตรียมอาหารเสร็จสิ้นของร้านอาหาร
+      
       DateTime dateResOrderFinish = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRes[i][5].toString()) * 1000);
 
-      //เวลารับคำสั่งซื้อของหนัพงานขนส่งอาหาร
+      
       DateTime dateRider = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][3].toString()) * 1000);
 
-      //เวลารับอาหารจากร้านของพนักงานขนส่งอาหาร
+      
       DateTime dateRiderRecieve = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][5].toString()) * 1000);
 
-      //เวลาถึงบ้านลูกค้าของพนักงานขนส่งอาหาร
+      
       DateTime dateRiderDelivery = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][6].toString()) * 1000);
 
-      //เวลาส่งอาหารให้ลูกค้า
+      
       DateTime dateRiderDeliveryDate = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][7].toString()) * 1000);
 
@@ -176,12 +176,12 @@ class _ResHistoryState extends State<ResHistory> {
       formatedRiderDeliveryDate.add(formatter.format(dateRiderDeliveryDate));
     }
 
-    print("customer order${dataFinalMenuHisCus}");
-    print("restaurant order${timeRes}");
-    print("time${formatedResOrderFinish}");
+    print("Customer order${dataFinalMenuHisCus}");
+    print("Restaurant order${timeRes}");
+    print("Time${formatedResOrderFinish}");
   }
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -211,7 +211,7 @@ class _ResHistoryState extends State<ResHistory> {
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 20, left: 20),
               child: const Text(
-                "last order :",
+                "Last Order :",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,

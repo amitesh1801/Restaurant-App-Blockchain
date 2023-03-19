@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:projectfood/about_restuarant/restuarant_manage_menu.dart';
 
 class MenuEditForm extends StatefulWidget {
-  //ประกาศ constractor เพื่อรับค่าจากหน้าอื่น
+  
   final String menuId;
   final String menuName;
   final int menuPrice;
@@ -28,7 +28,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
   TextEditingController menuPriceController = TextEditingController();
   TextEditingController menuDescriptController = TextEditingController();
 
-// Set ค่าที่รับมาให้กับตัวแปรที่ประกาศไว้
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +38,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
     menuDescriptController.text = widget.menuDescript;
   }
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +46,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "food items",
+            "Food Items",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 165,
@@ -115,7 +115,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "food name",
+                          hintText: "Food Name",
                         ),
                       ),
                     ),
@@ -136,7 +136,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                         controller: menuPriceController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          hintText: "price",
+                          hintText: "Price",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -158,7 +158,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                         controller: menuDescriptController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "description",
+                          hintText: "Description",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -175,7 +175,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
           ],
         ),
       ),
-      //เป็นส่วนล่างของหน้าจอ
+      
       bottomNavigationBar: Container(
         height: 160,
         decoration: const BoxDecoration(
@@ -192,7 +192,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                     primary: const Color.fromRGBO(255, 77, 77, 1),
                   ),
                   onPressed: () async {
-                    // ลบข้อมูลใน firebase
+                    
                     final reference = FirebaseFirestore.instance
                         .collection("menus")
                         .doc(widget.menuId);
@@ -204,7 +204,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                     Navigator.of(context).pop();
                   },
                   child: const Text(
-                    "remove food items",
+                    "Remove Food Items",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
@@ -217,7 +217,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                     primary: const Color.fromRGBO(0, 177, 62, 1),
                   ),
                   onPressed: () async {
-                    //update ข้อมูลใน firebase
+                    
                     await FirebaseFirestore.instance
                         .collection("menus")
                         .doc(widget.menuId)
@@ -232,7 +232,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                     Navigator.of(context).pop();
                   },
                   child: const Text(
-                    "edit food list",
+                    "Edit Food List",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),

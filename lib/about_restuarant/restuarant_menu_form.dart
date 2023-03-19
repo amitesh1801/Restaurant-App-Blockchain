@@ -22,7 +22,7 @@ class _MenuFormState extends State<MenuForm> {
   late File image;
   String urlPicture = "";
 
-  //ฟังก์ชันเลือกรูปจาก gallery
+  
   Future<void> pickImage() async {
     try {
       // ignore: non_constant_identifier_names
@@ -34,12 +34,12 @@ class _MenuFormState extends State<MenuForm> {
         image = imageTemporary;
       });
     } on PlatformException catch (e) {
-      print("failed to pick image: $e");
+      print("Failed to Pick Image: $e");
     }
   }
 
-  final formKey = GlobalKey<FormState>(); //ประกาศ Form state เพื่อเรียกใช้ Form
-  //ดึง model MenuModel มาเพื่อเก็บค่า
+  final formKey = GlobalKey<FormState>();
+  
   MenuModel menu = MenuModel(
       restuarantMenuId: "",
       menuId: "",
@@ -52,7 +52,7 @@ class _MenuFormState extends State<MenuForm> {
   CollectionReference menuCollection =
       FirebaseFirestore.instance.collection("menus");
 
-  //ฟังก์ชัน upload รูปภาพลง cloud storage
+ 
   Future<void> uploadImage() async {
     Random random = Random();
     int i = random.nextInt(10000);
@@ -79,7 +79,7 @@ class _MenuFormState extends State<MenuForm> {
     });
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -101,7 +101,7 @@ class _MenuFormState extends State<MenuForm> {
                 title: Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    "เพิ่มรายการอาหาร",
+                    "Add Food Items",
                     style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
                   ),
                   width: 180,
@@ -170,7 +170,7 @@ class _MenuFormState extends State<MenuForm> {
                                     fontFamily: 'NotoSansThai-Regular',
                                     fontSize: 18),
                                 decoration: const InputDecoration(
-                                  hintText: "ชื่ออาหาร",
+                                  hintText: "Food Name",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
                                       fontSize: 20,
@@ -203,7 +203,7 @@ class _MenuFormState extends State<MenuForm> {
                                     fontFamily: 'NotoSansThai-Regular',
                                     fontSize: 18),
                                 decoration: const InputDecoration(
-                                  hintText: "ราคา",
+                                  hintText: "Price",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
                                       fontSize: 20,
@@ -236,7 +236,7 @@ class _MenuFormState extends State<MenuForm> {
                                     fontFamily: 'NotoSansThai-Regular',
                                     fontSize: 18),
                                 decoration: const InputDecoration(
-                                  hintText: "คำอธิบายเมนู",
+                                  hintText: "Menu Description",
                                   border: InputBorder.none,
                                   hintStyle: TextStyle(
                                       fontSize: 20,
@@ -257,7 +257,7 @@ class _MenuFormState extends State<MenuForm> {
                       )),
                 ),
               ),
-              //เป็นส่วนล่างของหน้าจอ
+              
               bottomNavigationBar: Container(
                 height: 80,
                 decoration: const BoxDecoration(
@@ -279,7 +279,7 @@ class _MenuFormState extends State<MenuForm> {
                                 builder: (context) => const ManageMenu()));
                       },
                       child: const Text(
-                        "สร้างรายการอาหาร",
+                        "Create Food List",
                         style: TextStyle(
                             fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                       )),

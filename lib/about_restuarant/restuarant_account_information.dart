@@ -51,7 +51,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "User account",
+            "User Account",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 189,
@@ -100,7 +100,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "digital wallet account",
+                      "Digital Wallet Account",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -123,7 +123,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                         controller: digitalWalletController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "digital wallet account",
+                          hintText: "Digital Wallet Account",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -133,7 +133,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                       ),
                     ),
                     const Text(
-                      "digital wallet code",
+                      "Digital Wallet Code",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -156,7 +156,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                         controller: privateWalletController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "digital wallet code",
+                          hintText: "Digital Wallet Code",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,

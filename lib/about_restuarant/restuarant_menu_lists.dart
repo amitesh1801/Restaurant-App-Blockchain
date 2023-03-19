@@ -15,7 +15,7 @@ class MenuLists extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
     return Container(
-      //query ข้อมูลรายการอาหารมาแสดงเป็น Listview
+      
       child: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection("menus")

@@ -6,7 +6,7 @@ import 'package:projectfood/about_restuarant/restuarant_home.dart';
 import 'package:projectfood/widgets/customshape.dart';
 
 class RestuarantEditInfo extends StatefulWidget {
-  //ประกาศ Constructor เพื่อรับข้อมูลจากหน้าอื่น
+
 
   final restuarantId;
   final restuarantName;
@@ -32,7 +32,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
   TextEditingController restuarantTelController = TextEditingController();
   TextEditingController restuarantAddressController = TextEditingController();
 
-  //Set ค่าที่รับมาใส่ในตัวแปรที่ได้ประกาศไว้
+  
   @override
   void initState() {
     super.initState();
@@ -42,7 +42,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
     restuarantAddressController.text = widget.restuarantAddress;
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +66,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "edit personal information",
+            "Edit Personal Information",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 189,
@@ -114,7 +114,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "shop name",
+                      "Shop Name",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -136,7 +136,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                         controller: restuarantNameController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "shop name",
+                          hintText: "Shop Name",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -146,7 +146,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                       ),
                     ),
                     const Text(
-                      "shop owner name",
+                      "Shop Owner Name",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -168,7 +168,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                         controller: restuarantOwnerController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "shop owner name",
+                          hintText: "Shop Owner Name",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -178,7 +178,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                       ),
                     ),
                     const Text(
-                      "phone number",
+                      "Phone Number",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -205,12 +205,12 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "phone number",
+                          hintText: "Phone Number",
                         ),
                       ),
                     ),
                     const Text(
-                      "address",
+                      "Address",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -237,7 +237,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "address",
+                          hintText: "Address",
                         ),
                       ),
                     ),
@@ -248,7 +248,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
           ),
         ),
       ),
-      //เป็นส่วนล่างของหน้าจอ
+      
       bottomNavigationBar: Container(
         height: 80,
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
@@ -266,7 +266,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                 primary: const Color.fromRGBO(0, 177, 62, 1),
               ),
               onPressed: () {
-                //update ข้อมูลใน firebase
+                
                 FirebaseFirestore.instance
                     .collection("restuarants")
                     .doc(widget.restuarantId)
@@ -279,7 +279,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                 Navigator.pop(context);
               },
               child: const Text(
-                "confirm",
+                "Confirm",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
