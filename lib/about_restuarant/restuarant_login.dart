@@ -335,7 +335,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                       },
                                       child: Container(
                                         child: const Text(
-                                          "Subscribe",
+                                          "Register",
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Color.fromRGBO(
