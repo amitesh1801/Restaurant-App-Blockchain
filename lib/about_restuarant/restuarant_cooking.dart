@@ -48,19 +48,19 @@ class _ResCookingState extends State<ResCooking> {
   final myAddress =
       "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //Restaurant bag number
 
-  //Set ค่าตั้งต้น
+  
   @override
   void initState() {
     super.initState();
     httpClient = Client();
     ethClient = Web3Client(
         "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3",
-        httpClient); //เก็บ url ของ infura
+        httpClient); 
 
-    //เรียกใช้ฟังก์ชัน getStatusRider
+    
     getStatusRider(myAddress);
 
-    //เช็คเงื่อนไขทุก 15 วินาที
+    
     Timer(Duration(seconds: 15), () {
       if (statusRider == true) {
         riderName = dataFinalMenuRider[0][1];
@@ -79,7 +79,7 @@ class _ResCookingState extends State<ResCooking> {
     return contract;
   }
 
-  //ฟังก์ชันสำหรับ query ข้อมูลจากบล็อกเชน
+  
   Future<List<dynamic>> query(String functionName, List<dynamic> args) async {
     final contract = await loadContract();
     final ethFunction = contract.function(functionName);
@@ -89,13 +89,13 @@ class _ResCookingState extends State<ResCooking> {
     return result;
   }
 
-  //query ข้อมูลจากบล็อกเชน
+ 
   Future<void> getStatusRider(String targetAddress) async {
-    List<dynamic> resultOrderRes = []; //เก็บข้อมูลออเดอร์ร้านอาหาร
+    List<dynamic> resultOrderRes = []; 
 
-    amoutMenu = await query("nextId", []); //จำนวนออเดอร์ทั้งหมด
+    amoutMenu = await query("nextId", []); 
 
-    //query ข้อมูลในบล็อกเชน จากฟังก์ชัน readOrderCustomer
+    
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result = await query("readOrderCustomer", [BigInt.from(i)]);
 
@@ -103,14 +103,14 @@ class _ResCookingState extends State<ResCooking> {
       print(resultMenu.length);
     }
 
-//query ข้อมูลในบล็อกเชน จากฟังก์ชัน readOrderRider
+
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result1 = await query("readOrderRider", [BigInt.from(i)]);
       resultOrderRider.clear();
       resultOrderRider.add(result1);
-      print("ไรเดอร์${resultOrderRider}");
+      print("Rider${resultOrderRider}");
     }
-//query ข้อมูลในบล็อกเชน จากฟังก์ชัน readOrderRestaurant
+
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result2 =
           await query("readOrderRestaurant", [BigInt.from(i)]);
@@ -138,7 +138,7 @@ class _ResCookingState extends State<ResCooking> {
     }
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจจอ
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,7 +161,7 @@ class _ResCookingState extends State<ResCooking> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "order",
+            "Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -214,7 +214,7 @@ class _ResCookingState extends State<ResCooking> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "ordered by:",
+                      "Ordered By:",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -423,7 +423,7 @@ class _ResCookingState extends State<ResCooking> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "all food included",
+                                "All Food Included",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -441,7 +441,7 @@ class _ResCookingState extends State<ResCooking> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "shipping cost",
+                                  "Shipping Cost",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontFamily: 'NotoSansThai-Regular'),
@@ -472,7 +472,7 @@ class _ResCookingState extends State<ResCooking> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          child: Text("total price",
+                          child: Text("Total Price",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'NotoSansThai-Regular')),
@@ -494,7 +494,7 @@ class _ResCookingState extends State<ResCooking> {
         ),
       ),
 
-      //ส่วนด้านล่างของหน้าจอ
+      
       bottomNavigationBar: Container(
         height: 80,
         decoration:
@@ -513,7 +513,7 @@ class _ResCookingState extends State<ResCooking> {
                 primary: const Color.fromRGBO(0, 177, 62, 1),
               ),
               onPressed: () {
-                //ฟังก์ชันเตรียมอาหารเสร็จสิ้นของร้านอาหาร
+                
                 restaurantSubmit(BuildContext context) async {
                   EthPrivateKey credentials = EthPrivateKey.fromHex(
                       widget.private_digital_wallet); //PrivateKey Restaurant
@@ -536,17 +536,17 @@ class _ResCookingState extends State<ResCooking> {
                 }
 
                 //print(widget.dataId);
-                //เรียกใช้ ฟังก์ชั้นรับออเดอร์
+               
                 restaurantSubmit(context);
                 print(restaurantSubmit.runtimeType);
-                print("order finished");
+                print("Order Finished");
 
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return RestuarantHome();
                 }));
               },
               child: const Text(
-                "finished preparing food",
+                "Finished Preparing Food",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
