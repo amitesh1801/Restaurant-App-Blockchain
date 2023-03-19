@@ -14,9 +14,9 @@ class CustomerHome extends StatefulWidget {
 }
 
 class _CustomerHomeState extends State<CustomerHome> {
-  final auth = FirebaseAuth.instance; //เก็บ uid สำหรับ accouut ที่กำลัง login
+  final auth = FirebaseAuth.instance; //uid accouut login
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  // UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _CustomerHomeState extends State<CustomerHome> {
         toolbarHeight: 80,
         automaticallyImplyLeading: false,
         title: const Text(
-          "หน้าหลัก",
+          "Homepage",
           style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
         ),
         shape: const RoundedRectangleBorder(
@@ -116,7 +116,7 @@ class _CustomerHomeState extends State<CustomerHome> {
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'ค้นหา',
+                    hintText: 'Search',
                     icon: Icon(
                       Icons.search_outlined,
                       size: 30,
@@ -131,7 +131,7 @@ class _CustomerHomeState extends State<CustomerHome> {
             Container(
               margin: const EdgeInsets.only(left: 20, top: 20),
               child: const Text(
-                "ร้านอาหาร:",
+                "Restaurant:",
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class _CustomerHomeState extends State<CustomerHome> {
               ),
             ),
             Container(
-              //query ข้อมูลร้านอาหารจาก firebase
+              //query firebase
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection("restuarants")
@@ -151,7 +151,7 @@ class _CustomerHomeState extends State<CustomerHome> {
                     );
                   }
 
-                  //แสดง listview
+                  // listview
                   return ListView(
                     shrinkWrap: true,
                     children: snapshot.data!.docs.map((document) {

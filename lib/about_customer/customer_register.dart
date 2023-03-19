@@ -18,13 +18,13 @@ class CustomerRegister extends StatefulWidget {
 
 class _CustomerRegisterState extends State<CustomerRegister> {
   final formKey =
-      GlobalKey<FormState>(); //ประกาศ FormKey state เพื่อเรียกใช้ form
+      GlobalKey<FormState>(); //FormKey state form
   ProfileRegis profile = ProfileRegis(
       profileEmail: "",
-      profilePassword: ""); //เรียกใช้ constructor ของ model ProfileRegis
+      profilePassword: ""); //constructor model ProfileRegis
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
 
-  //เป็นส่วน UI แสดงผลบนหน้าจอ
+  //UI
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -79,7 +79,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                         margin: const EdgeInsets.only(
                                             top: 80, left: 15),
                                         child: const Text(
-                                          "สมัครสมาชิก",
+                                          "Register",
                                           style: TextStyle(
                                               fontSize: 35,
                                               fontFamily:
@@ -107,7 +107,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                                   color: Colors.white),
                                               decoration: const InputDecoration(
                                                   border: InputBorder.none,
-                                                  hintText: 'อีเมล',
+                                                  hintText: 'Email',
                                                   icon: Icon(
                                                     Icons.email_outlined,
                                                     size: 30,
@@ -123,10 +123,10 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                               validator: MultiValidator([
                                                 RequiredValidator(
                                                     errorText:
-                                                        "กรุณาป้อนอีเมล"),
+                                                        "Enter your email"),
                                                 EmailValidator(
                                                     errorText:
-                                                        "รูปแบบอีเมลไม่ถูกต้อง")
+                                                        "Invalid Email Format")
                                               ]),
                                               onSaved: (String? email) {
                                                 profile.profileEmail = email!;
@@ -158,7 +158,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                                   color: Colors.white),
                                               decoration: const InputDecoration(
                                                   border: InputBorder.none,
-                                                  hintText: 'รหัสผ่าน',
+                                                  hintText: 'Password',
                                                   icon: Icon(
                                                     Icons.key_outlined,
                                                     size: 30,
@@ -173,7 +173,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                                           178, 178, 178, 1))),
                                               validator: RequiredValidator(
                                                   errorText:
-                                                      "กรุณาป้อนรหัสผ่าน"),
+                                                      "Enter your password."),
                                               onSaved: (String? password) {
                                                 profile.profilePassword =
                                                     password!;
@@ -198,7 +198,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                                         BorderRadius.circular(
                                                             15))),
                                             child: const Text(
-                                              "ลงทะเบียน",
+                                              "Sign Up",
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   fontFamily:
@@ -261,7 +261,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                               children: [
                                 Container(
                                   child: const Text(
-                                    "หากคุณยังมีบัญชีผู้ใช้แล้วคลิก",
+                                    "If you still have an account, click",
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.white,
@@ -277,7 +277,7 @@ class _CustomerRegisterState extends State<CustomerRegister> {
                                   },
                                   child: Container(
                                     child: const Text(
-                                      " เข้าสู่ระบบ",
+                                      " Login",
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: Color.fromRGBO(255, 170, 0, 1),

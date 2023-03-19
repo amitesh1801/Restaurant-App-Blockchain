@@ -436,7 +436,7 @@ class _DetailHistoryState extends State<DetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาที่เตรียมอาหารเสร็จสิ้น",
+                        child: const Text("The time when the food is ready",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),

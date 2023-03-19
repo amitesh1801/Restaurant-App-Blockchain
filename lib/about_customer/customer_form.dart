@@ -13,12 +13,12 @@ class CustomerForm extends StatefulWidget {
 class _CustomerFormState extends State<CustomerForm> {
   final formKey = GlobalKey<FormState>();
 
-  //ประกาศตัวแปรเพื่อใช้ในการรับข้อมูลจากการกรอก form
+  // form
   TextEditingController customerNameController = TextEditingController();
   TextEditingController customerTelController = TextEditingController();
   TextEditingController customerAddressController = TextEditingController();
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  // UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +56,7 @@ class _CustomerFormState extends State<CustomerForm> {
                             Container(
                               margin: const EdgeInsets.only(top: 80, left: 15),
                               child: const Text(
-                                "ข้อมูลส่วนตัว",
+                                "Personal Information",
                                 style: TextStyle(
                                     fontSize: 35,
                                     fontFamily: 'NotoSansThai-Regular',
@@ -83,7 +83,7 @@ class _CustomerFormState extends State<CustomerForm> {
                                   keyboardType: TextInputType.text,
                                   decoration: const InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "ชื่อลูกค้า",
+                                      hintText: "Customer's Name",
                                       hintStyle: TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'NotoSansThai-Regular',
@@ -112,7 +112,7 @@ class _CustomerFormState extends State<CustomerForm> {
                                   keyboardType: TextInputType.text,
                                   decoration: const InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "ที่อยู่ลูกค้า",
+                                      hintText: "Customer Address",
                                       hintStyle: TextStyle(
                                           fontSize: 20,
                                           fontFamily: 'NotoSansThai-Regular',
@@ -141,7 +141,7 @@ class _CustomerFormState extends State<CustomerForm> {
                                   keyboardType: TextInputType.number,
                                   decoration: const InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "เบอร์โทรศัพท์",
+                                    hintText: "Phone Number",
                                     hintStyle: TextStyle(
                                         fontSize: 20,
                                         fontFamily: 'NotoSansThai-Regular',
@@ -174,7 +174,7 @@ class _CustomerFormState extends State<CustomerForm> {
     );
   }
 
-// Widget สำหรับปุ่มสมัครสมาชิก
+// Widget 
   Widget _showOKButton() {
     // ignore: deprecated_member_use
     return Center(
@@ -189,9 +189,9 @@ class _CustomerFormState extends State<CustomerForm> {
                   borderRadius: BorderRadius.circular(15))),
           onPressed: () {
             var firebaseUser = FirebaseAuth
-                .instance.currentUser; //เก็บ uid ของ account ที่กำลัง login
+                .instance.currentUser; // uid account login
 
-            //สร้างข้อมูลใหม่เข้าไปใน firebase
+            //firebase
             FirebaseFirestore.instance
                 .collection("customers")
                 .doc(firebaseUser!.uid)
@@ -202,14 +202,14 @@ class _CustomerFormState extends State<CustomerForm> {
               "customer_tel": customerTelController.text
             });
 
-            //กำหนดให้เปลี่ยนหน้า
+            
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) {
               return MetaMark();
             }));
           },
           child: const Text(
-            "สมัครสมาชิก",
+            "Register",
             style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
           ),
         ),

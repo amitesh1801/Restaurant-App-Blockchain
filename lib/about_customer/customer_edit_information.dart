@@ -6,7 +6,7 @@ import 'package:projectfood/about_customer/customer_information.dart';
 import 'package:projectfood/widgets/customshape.dart';
 
 class CustomerEditInfo extends StatefulWidget {
-  //ประกาศ Constructor สำหรับรับค่าจากหน้าอื่น
+  // Constructor 
   final customerId;
   final customerName;
   final customerAddress;
@@ -24,12 +24,12 @@ class CustomerEditInfo extends StatefulWidget {
 }
 
 class _CustomerEditInfoState extends State<CustomerEditInfo> {
-  //ประกาศตัวแปรเพื่อนำมารับค่า
+  
   TextEditingController customerNameController = TextEditingController();
   TextEditingController customerAddressController = TextEditingController();
   TextEditingController customerTelController = TextEditingController();
 
-//set ค่าที่รับมาให้กับตัวแปร
+//set 
   @override
   void initState() {
     super.initState();
@@ -38,7 +38,6 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
     customerTelController.text = widget.customerTel;
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +61,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "แก้ไขข้อมูลส่วนตัว",
+            "Edit Personal Information",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 189,
@@ -109,7 +108,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        "ชื่อลูกค้า",
+                        "Customer's Name",
                         style: TextStyle(
                             fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                       ),
@@ -133,7 +132,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                           controller: customerNameController,
                           keyboardType: TextInputType.text,
                           decoration: const InputDecoration(
-                            hintText: "ชื่อลูกค้า",
+                            hintText: "Customer Name",
                             border: InputBorder.none,
                             hintStyle: TextStyle(
                                 fontSize: 20,
@@ -146,7 +145,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                         height: 10,
                       ),
                       const Text(
-                        "ที่อยู่",
+                        "Address",
                         style: TextStyle(
                             fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                       ),
@@ -174,7 +173,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                                 fontSize: 20,
                                 fontFamily: 'NotoSansThai-Regular',
                                 color: Color.fromRGBO(88, 88, 88, 1)),
-                            hintText: "ที่อยู่",
+                            hintText: "Address",
                           ),
                         ),
                       ),
@@ -182,7 +181,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                         height: 10,
                       ),
                       const Text(
-                        "เบอร์โทรศัพท์",
+                        "Phone Number",
                         style: TextStyle(
                             fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                       ),
@@ -210,7 +209,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                                 fontSize: 20,
                                 fontFamily: 'NotoSansThai-Regular',
                                 color: Color.fromRGBO(88, 88, 88, 1)),
-                            hintText: "เบอร์โทรศัพท์",
+                            hintText: "Phone Number",
                           ),
                         ),
                       ),
@@ -242,7 +241,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                 primary: const Color.fromRGBO(0, 177, 62, 1),
               ),
               onPressed: () {
-                //ฟังก์ชัน update ข้อมูลลงไปใน Firebase
+                //update Firebase
                 FirebaseFirestore.instance
                     .collection("customers")
                     .doc(widget.customerId)
@@ -254,7 +253,7 @@ class _CustomerEditInfoState extends State<CustomerEditInfo> {
                 Navigator.pop(context);
               },
               child: const Text(
-                "แก้ไข",
+                "Modify",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),

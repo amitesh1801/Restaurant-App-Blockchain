@@ -10,7 +10,7 @@ import 'package:projectfood/about_restuarant/restuarant_home.dart';
 import 'package:web3dart/web3dart.dart';
 
 class ResAcceptOrder extends StatefulWidget {
-  //ประกาศ Constructor เพื่อรับค่าจากหน้าอื่น
+  //announce Constructor from another page
   final String dataMenuname;
   final String MenuPrice;
   final String dataName;
@@ -40,19 +40,19 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
   late Web3Client ethClient;
   bool data = false;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตังร้านอาหาร
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //wallet number
 
-  //Set ค่าตั้งต้น
+  //Set Default
   @override
   void initState() {
     super.initState();
     httpClient = Client();
     ethClient = Web3Client(
         "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3",
-        httpClient); //เก็บ url infura
+        httpClient); //collect url infura
   }
 
-  //load smartcontract จากไฟล์ Json
+  //load smartcontract from Json file
   Future<DeployedContract> loadContract() async {
     String abi = await rootBundle.loadString("lib/assets/abi.json");
     String contractAddress =
@@ -63,7 +63,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
     return contract;
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+//UI displayed on screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +86,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "คำสั่งซื้อ",
+            "Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -108,7 +108,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "รหัสคำสั่งซื้อ",
+                    "Order ID",
                     style: TextStyle(
                         fontSize: 16,
                         fontFamily: 'NotoSansThai-Regular',
@@ -139,7 +139,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "สั่งโดย:",
+                      "Ordered By:",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -200,7 +200,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "สรุปคำสั่งซื้อ",
+                      "Summary",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -272,7 +272,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "รวมค่าอาหารทั้งหมด",
+                                "All Food Included",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -290,7 +290,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "ค่าจัดส่ง",
+                                  "Shipping Cost",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontFamily: 'NotoSansThai-Regular'),
@@ -321,7 +321,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          child: Text("ราคาทั้งหมด",
+                          child: Text("Total Price",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'NotoSansThai-Regular')),
@@ -343,7 +343,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
         ),
       ),
 
-      //พื้นที่ส่วนล่างของหน้าจอ
+      //Lower screen area
       bottomNavigationBar: Container(
         height: 102,
         decoration:
@@ -376,7 +376,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                       return RestuarantHome();
                     }));
 
-                    //ฟังก์ชันส่งข้อมูลเข้า smartcontract ผ่าน parametor //ฟังก์ชันปฏิเสธคำสั่งซื้อ
+                    //input smartcontract pass parameter //order rejection function
                     restaurantDecline(BuildContext context) async {
                       EthPrivateKey credentials = EthPrivateKey.fromHex(widget
                           .private_digital_wallet); //PrivateKey restaurant
@@ -401,12 +401,12 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                       return result;
                     }
 
-                    //เรียกใช้ฟังก์ชันปฏิเสธคำสั่งซื้อ
+                    //call order rejection function
                     restaurantDecline(context);
                     print(restaurantDecline.runtimeType);
                   },
                   child: const Text(
-                    "ปฏิเสธ",
+                    "Refuse",
                     style: TextStyle(
                         fontSize: 20,
                         fontFamily: 'NotoSansThai-Regular',
@@ -437,7 +437,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                       );
                     }));
 
-                    //ฟังก์ชันส่งข้อมูลเข้า smartcontract ผ่าน parametor //ฟังก์ชันรับคำสั่งซื้อ
+                    //input smartcontract pass parameter //Order taking function
                     restaurantAccept(BuildContext context) async {
                       EthPrivateKey credentials = EthPrivateKey.fromHex(widget
                           .private_digital_wallet); //PrivateKey Restaurant
@@ -462,13 +462,13 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                       return result;
                     }
 
-                    //เรียกใช้ ฟังก์ชั้นรับออเดอร์
+                    //Call order function
                     restaurantAccept(context);
                     print(restaurantAccept.runtimeType);
-                    print("รับคำสั่งซื้อแล้ว");
+                    print("Order Received");
                   },
                   child: const Text(
-                    "รับคำสั่งซื้อ",
+                    "Receive Order",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),

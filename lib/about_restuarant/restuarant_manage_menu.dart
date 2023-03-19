@@ -11,7 +11,7 @@ class ManageMenu extends StatefulWidget {
 }
 
 class _ManageMenuState extends State<ManageMenu> {
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _ManageMenuState extends State<ManageMenu> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "รายการอาหาร",
+            "Food Items",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -65,7 +65,7 @@ class _ManageMenuState extends State<ManageMenu> {
                     MaterialPageRoute(builder: (context) => MenuForm()));
               },
               child: const Text(
-                "เพิ่มรายการอาหาร",
+                "Add Food Items",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),

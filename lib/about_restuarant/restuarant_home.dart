@@ -27,9 +27,9 @@ class RestuarantHome extends StatefulWidget {
 class _RestuarantHomeState extends State<RestuarantHome> {
   final auth = FirebaseAuth.instance;
   var firebaseUser = FirebaseAuth
-      .instance.currentUser; //เก็บ uid ของ account ที่ login อยู่ปัจจุบัน
+      .instance.currentUser; 
 
-  bool viewVisible = true; //show list คำสั่งซื้อ
+  bool viewVisible = true; 
 
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -47,21 +47,21 @@ class _RestuarantHomeState extends State<RestuarantHome> {
   var dataqty;
   var finalresult;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตัง
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; 
 
-  //Set ค่าตั้งต้น
+  
   @override
   void initState() {
     httpClient = Client();
     ethClient = Web3Client(
         "https://kovan.infura.io/v3/ea6f8a087ef041da9aa38a52779c1af3",
-        httpClient); //เก็บ url ของ infura
+        httpClient); 
 
-    //เรียกใช้ฟังก์ชัน
+    
     getOrderCustomer(myAddress);
     viewVisible = true;
 
-    //ให้ทำงานทุกๆ 3 วินาที
+    
     Timer.periodic(Duration(seconds: 3), (Timer t) {
       void showWidget() {
         setState(() {
@@ -74,18 +74,18 @@ class _RestuarantHomeState extends State<RestuarantHome> {
     super.initState();
   }
 
-  //load smartcontract จากไฟล์ Json
+  
   Future<DeployedContract> loadContract() async {
     String abi = await rootBundle.loadString("lib/assets/abi.json");
     String contractAddress =
-        "0xF1820c9873aEd059809c0B2CFa8031F8B67C5249"; //contractAddress
+        "0xF1820c9873aEd059809c0B2CFa8031F8B67C5249"; 
     final contract = DeployedContract(ContractAbi.fromJson(abi, "FoodDelivery"),
         EthereumAddress.fromHex(contractAddress));
 
     return contract;
   }
 
-  //ฟังก์ชันสำหรับ query ข้อมูลจากบล็อกเชน
+  
   Future<List<dynamic>> query(String functionName, List<dynamic> args) async {
     final contract = await loadContract();
     final ethFunction = contract.function(functionName);
@@ -95,14 +95,14 @@ class _RestuarantHomeState extends State<RestuarantHome> {
     return result;
   }
 
-  //query ข้อมูล
+  
   Future<void> getOrderCustomer(String targetAddress) async {
-    List<dynamic> amoutMenu = await query("nextId", []); //จำนวนออเดอร์ทั้งหมด
+    List<dynamic> amoutMenu = await query("nextId", []); 
 
-    List<dynamic> resultMenu = []; //ข้อมูลออเดอร์ทั้งหมด
-    List<dynamic> resultOrderRes = []; //ข้อมูลออเดอร์ของร้านอาหาร
+    List<dynamic> resultMenu = []; 
+    List<dynamic> resultOrderRes = []; 
 
-    //query ข้อมูลจากฟังก์ชัน readOrderCustomer และ readOrderRestaurant
+    
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result = await query("readOrderCustomer", [BigInt.from(i)]);
       List<dynamic> result1 =
@@ -116,13 +116,13 @@ class _RestuarantHomeState extends State<RestuarantHome> {
       }
     }
 
-    //อ่านข้อมูลร้านอาหาร
+    
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       if (resultOrderRes[i][3].toString() == 0.toString()) {
         dataMenuRes.add(resultOrderRes[i][0]);
       }
     }
-    //query เมนูที่ยังไม่ได้รับ
+    
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       if (resultMenu[i][0] == resultOrderRes[i][0] &&
           resultOrderRes[i][3].toString() == 0.toString()) {
@@ -131,15 +131,15 @@ class _RestuarantHomeState extends State<RestuarantHome> {
     }
 
     print("Finish${dataFinalMenuRes}");
-    // print("เมนูลูกค้า${resultMenu[1]}");
+    
 
-    print("เมนูร้านอาหาร${resultOrderRes}");
+    print("Restaurant Menu${resultOrderRes}");
     print(resultMenu.length);
     dataMenu = resultMenu;
     data = true;
   }
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -323,7 +323,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                           width: 10,
                         ),
                         Text(
-                          "บัญชี",
+                          "account",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -368,7 +368,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                           width: 10,
                         ),
                         Text(
-                          "รายการอาหาร",
+                          "Food Items",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -415,7 +415,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                           width: 10,
                         ),
                         Text(
-                          "ออกจากระบบ",
+                          "Log Out",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -516,7 +516,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 20, left: 20),
               child: const Text(
-                "คำสั่งซื้อ :",
+                "Order :",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,
@@ -532,7 +532,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                     children: List.generate(dataFinalMenuRes.length, (index) {
                       return GestureDetector(
                         onTap: () async {
-                          //query ข้อมูลจาก firebase
+                          
                           var result = await FirebaseFirestore.instance
                               .collection("restuarants")
                               .where("restuarant_id",
@@ -611,7 +611,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                                                         'NotoSansThai-Regular'),
                                               ),
                                               Text(
-                                                "${dataFinalMenuRes[index][3].toString()} รายการ",
+                                                "${dataFinalMenuRes[index][3].toString()} list",
                                                 style: const TextStyle(
                                                     fontFamily:
                                                         'NotoSansThai-Regular'),

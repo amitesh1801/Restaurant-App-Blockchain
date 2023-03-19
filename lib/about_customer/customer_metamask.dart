@@ -14,7 +14,7 @@ class MetaMark extends StatefulWidget {
 
 class _MetaMarkState extends State<MetaMark> {
   final formKey =
-      GlobalKey<FormState>(); //ประกาศ FormKey state เพื่อเรียกใช้ form
+      GlobalKey<FormState>(); //FormKey state form
 
   TextEditingController customerDWController = TextEditingController();
   TextEditingController customerPvDWController = TextEditingController();
@@ -55,7 +55,7 @@ class _MetaMarkState extends State<MetaMark> {
                             Container(
                               margin: const EdgeInsets.only(top: 80, left: 15),
                               child: const Text(
-                                "กระเป๋าเงินดิจิทัล",
+                                "Digital Wallet",
                                 style: TextStyle(
                                     fontSize: 35,
                                     fontFamily: 'NotoSansThai-Regular',
@@ -87,7 +87,7 @@ class _MetaMarkState extends State<MetaMark> {
                                           fontFamily: 'NotoSansThai-Regular',
                                           color:
                                               Color.fromRGBO(178, 178, 178, 1)),
-                                      hintText: "ที่อยู่กระเป๋าเงินดิจิทัล"),
+                                      hintText: "Digital Wallet Address"),
                                 ),
                               ),
                             ),
@@ -116,7 +116,7 @@ class _MetaMarkState extends State<MetaMark> {
                                           fontFamily: 'NotoSansThai-Regular',
                                           color:
                                               Color.fromRGBO(178, 178, 178, 1)),
-                                      hintText: "รหัสกระเป๋าเงินดิจิทัล"),
+                                      hintText: "Digital Wallet Code"),
                                 ),
                               ),
                             ),
@@ -143,7 +143,7 @@ class _MetaMarkState extends State<MetaMark> {
     );
   }
 
-//เป็น Widget สำหรับปุ่มบันทึกข้อมูล
+// Widget 
   Widget _showOKButton() {
     // ignore: deprecated_member_use
     return Center(
@@ -169,7 +169,7 @@ class _MetaMarkState extends State<MetaMark> {
               return CustomerHome();
             }));
           },
-          child: const Text("บันทึกข้อมูล",
+          child: const Text("Save Data",
               style:
                   TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular')),
         ),

@@ -25,38 +25,38 @@ class CusHistory extends StatefulWidget {
 class _CusHistoryState extends State<CusHistory> {
   var formatter;
   bool viewVisible = true;
-  List<dynamic> formated = []; //เวลาลูกค้าสั่งอาหาร
-  List<dynamic> formatedRes = []; //เวลาร้านรับคำสั่งซื้อ
-  List<dynamic> formatedResOrderFinish = []; //เวลาร้านอาหารทำอาหารเสร็จ
-  List<dynamic> formatedRider = []; //เวลาพนักงานขนส่งอาหารรับคำสั่งซื้อ
+  List<dynamic> formated = []; 
+  List<dynamic> formatedRes = []; 
+  List<dynamic> formatedResOrderFinish = []; 
+  List<dynamic> formatedRider = []; 
   List<dynamic> formatedRiderRecieve =
-      []; //เวลาพนักงานขนส่งอาหารรับอาหารจากร้าน
+      []; 
   List<dynamic> formatedRiderDelivery =
-      []; //เวลาพนักงานขนส่งอาหารเดินทางถึงบ้านลูกค้า
+      []; 
   List<dynamic> formatedRiderDeliveryDate =
-      []; //เวลาาพนักงานขนส่งอาหารส่งอาหารให้ลูกค้า
+      []; 
 
-  List<dynamic> timeRes = []; //เวลาดำเนินการออเดอร์ทั้งหมดของร้านอาหาร
+  List<dynamic> timeRes = []; 
   List<dynamic> timeRider =
-      []; //เวลาดำเนินการออเดอร์ทั้งหมดของพนักงานขนส่งอาหาร
-  List<dynamic> dataFinalMenuHisCus = []; //เก็บข้อมูลประวัติคำสั่งซื้อของลูกค้า
-  List<dynamic> resultOrderAddress = []; //เก็บข้อมูล address ของผู้ใช้งาน
-  List<dynamic> resultOrderCus = []; //เก็บข้อมูลคำสั่งซื้อของลูกค้า
-  List<dynamic> resultOrderRes = []; //เก็บข้อมูลคำสั่งซื้อของร้านอาหาร
+      []; 
+  List<dynamic> dataFinalMenuHisCus = []; 
+  List<dynamic> resultOrderAddress = []; 
+  List<dynamic> resultOrderCus = []; 
+  List<dynamic> resultOrderRes = []; 
   List<dynamic> resultOrderRider =
-      []; //เก็บข้อมูลคำสั่งซื้อของพนักงานขนส่งอาหาร
+      []; 
 
   bool data = false;
   late Client httpClient;
   late Web3Client ethClient;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตัง
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; 
 
-  //Set ค่าตั้งต้น
+  //Set 
   @override
   void initState() {
     super.initState();
-    Intl.defaultLocale = 'th'; //Format Time thai
+    Intl.defaultLocale = 'th'; //Format Time 
 
     initializeDateFormatting("th").then((value) {
       formatter = DateFormat("d MMM yyyy, HH.mm", 'th');
@@ -94,7 +94,7 @@ class _CusHistoryState extends State<CusHistory> {
     return contract;
   }
 
-  //ฟังก์ชันสำหรับการ query ข้อมูลในบล็อกเชน
+  // query 
   Future<List<dynamic>> query(String functionName, List<dynamic> args) async {
     final contract = await loadContract();
     final ethFunction = contract.function(functionName);
@@ -104,36 +104,36 @@ class _CusHistoryState extends State<CusHistory> {
     return result;
   }
 
-  //query ข้อมูลในบล็อกเชน
+  //query 
   Future<void> getOrderCustomer(String targetAddress) async {
     List<dynamic> amoutMenu =
-        await query("nextId", []); //query จำนวนออเดอร์ทั้งหมด
+        await query("nextId", []); //query 
 
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       List<dynamic> result = await query("readOrderCustomer",
-          [BigInt.from(i)]); //query ข้อมูลในฟังก์ชัน readOrderCustomer
+          [BigInt.from(i)]); //query readOrderCustomer
       List<dynamic> result1 = await query("readOrderRestaurant",
-          [BigInt.from(i)]); //query ข้อมูลในฟังก์ชัน readOrderRestaurant
+          [BigInt.from(i)]); //query readOrderRestaurant
       List<dynamic> result2 = await query("readOrderRider",
-          [BigInt.from(i)]); //query ข้อมูลในฟังก์ชัน readOrderRider
+          [BigInt.from(i)]); //query readOrderRider
       List<dynamic> result3 = await query(
-          "readOrder", [BigInt.from(i)]); //query ข้อมูลในฟังก์ชัน readOrder
+          "readOrder", [BigInt.from(i)]); //query readOrder
 
       resultOrderCus.add(result);
       resultOrderRes.add(result1);
       resultOrderRider.add(result2);
       resultOrderAddress.add(result3);
 
-      print("ลูกค้า${resultOrderCus}");
-      print("ร้านอาหาร${resultOrderRes}");
-      print("ไรเดอร์${resultOrderRider}");
-      print("address ${resultOrderAddress[0][1]}");
-      print("CusAddress ${widget.addressCus}");
+      print("Customer${resultOrderCus}");
+      print("Restaurant${resultOrderRes}");
+      print("Rider${resultOrderRider}");
+      print("Address ${resultOrderAddress[0][1]}");
+      print("Customer's Address ${widget.addressCus}");
 
       data = true;
     }
 
-    //sort ออเดอร์เรียงลำดับออเดอร์
+    //sort 
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       if (resultOrderAddress[i][1].toString() ==
               widget.addressCus.toLowerCase() &&
@@ -150,33 +150,33 @@ class _CusHistoryState extends State<CusHistory> {
       }
     }
 
-    //แปลงเวลา
+    
     for (int i = 0; i < dataFinalMenuHisCus.length; i++) {
-      //เวลาสั่งอาหารของลูกค้า
+      
       DateTime date = DateTime.fromMillisecondsSinceEpoch(
           int.parse(dataFinalMenuHisCus[i][8].toString()) * 1000);
 
-      //เวลารับคำสั่งซื้อของร้านอาหาร
+     
       DateTime dateRes = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRes[i][3].toString()) * 1000);
 
-      //เวลาเตรียมอาหารเสร็จสิ้นของร้านอาหาร
+      
       DateTime dateResOrderFinish = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRes[i][5].toString()) * 1000);
 
-      //เวลารับคำสั่งซื้อของหนัพงานขนส่งอาหาร
+      
       DateTime dateRider = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][3].toString()) * 1000);
 
-      //เวลารับอาหารจากร้านของพนักงานขนส่งอาหาร
+      
       DateTime dateRiderRecieve = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][5].toString()) * 1000);
 
-      //เวลาถึงบ้านลูกค้าของพนักงานขนส่งอาหาร
+      
       DateTime dateRiderDelivery = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][6].toString()) * 1000);
 
-      //เวลาส่งอาหารให้ลูกค้า
+      
       DateTime dateRiderDeliveryDate = DateTime.fromMillisecondsSinceEpoch(
           int.parse(timeRider[i][7].toString()) * 1000);
 
@@ -189,12 +189,12 @@ class _CusHistoryState extends State<CusHistory> {
       formatedRiderDeliveryDate.add(formatter.format(dateRiderDeliveryDate));
     }
 
-    print("ออเดอร์ลูกค้า${dataFinalMenuHisCus}");
-    print("ออเดอร์ร้านอาหาร${timeRes}");
-    print("เวลา${formatedResOrderFinish}");
+    print("Customer Order${dataFinalMenuHisCus}");
+    print("Restaurant Order${timeRes}");
+    print("Time${formatedResOrderFinish}");
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+// UI 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,7 +206,7 @@ class _CusHistoryState extends State<CusHistory> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ประวัติคำสั่งซื้อ",
+            "Order History",
             style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 180,
@@ -224,7 +224,7 @@ class _CusHistoryState extends State<CusHistory> {
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 20, left: 20),
               child: const Text(
-                "คำสั่งซื้อล่าสุด :",
+                "Recent Orders :",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,

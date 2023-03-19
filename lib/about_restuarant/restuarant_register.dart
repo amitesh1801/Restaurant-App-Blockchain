@@ -39,8 +39,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
             return Scaffold(
               backgroundColor: const Color.fromRGBO(255, 191, 64, 1),
               // appBar: AppBar(
-              //   title: const Text("สร้างบัญชีผู้ใช้"),
-              // ),
+             
               body: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -78,7 +77,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                             margin: const EdgeInsets.only(
                                                 top: 80, left: 15),
                                             child: const Text(
-                                              "สมัครสมาชิก",
+                                              "Register",
                                               style: TextStyle(
                                                   fontSize: 35,
                                                   fontFamily:
@@ -108,7 +107,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                                       const InputDecoration(
                                                           border:
                                                               InputBorder.none,
-                                                          hintText: 'อีเมล',
+                                                          hintText: 'Email',
                                                           icon: Icon(
                                                             Icons
                                                                 .email_outlined,
@@ -133,10 +132,10 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                                   validator: MultiValidator([
                                                     RequiredValidator(
                                                         errorText:
-                                                            "กรุณาป้อนอีเมล"),
+                                                            "Please enter your Email"),
                                                     EmailValidator(
                                                         errorText:
-                                                            "รูปแบบอีเมลไม่ถูกต้อง")
+                                                            "Invalid Email")
                                                   ]),
                                                   onSaved: (String? email) {
                                                     profile.profileEmail =
@@ -171,7 +170,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                                       const InputDecoration(
                                                           border:
                                                               InputBorder.none,
-                                                          hintText: 'รหัสผ่าน',
+                                                          hintText: 'Password',
                                                           icon: Icon(
                                                             Icons.key_outlined,
                                                             size: 30,
@@ -194,7 +193,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                                                       1))),
                                                   validator: RequiredValidator(
                                                       errorText:
-                                                          "กรุณาป้อนรหัสผ่าน"),
+                                                          "Please enter your password"),
                                                   onSaved: (String? password) {
                                                     profile.profilePassword =
                                                         password!;
@@ -225,7 +224,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                                                     .circular(
                                                                         15))),
                                                 child: const Text(
-                                                  "สมัครสมาชิก",
+                                                  "Register",
                                                   style: TextStyle(
                                                       fontSize: 22,
                                                       fontFamily:
@@ -293,7 +292,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                     // ignore: avoid_unnecessary_containers
                                     Container(
                                       child: const Text(
-                                        "หากคุณยังมีบัญชีผู้ใช้แล้วคลิก",
+                                        "If you have an account then CLICK",
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.white,
@@ -310,7 +309,7 @@ class _RestuarantRegisterState extends State<RestuarantRegister> {
                                       },
                                       child: Container(
                                         child: const Text(
-                                          " เข้าสู่ระบบ",
+                                          " Log In",
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Color.fromRGBO(

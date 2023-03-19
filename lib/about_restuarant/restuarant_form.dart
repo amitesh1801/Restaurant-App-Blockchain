@@ -11,15 +11,15 @@ class RestuarantForm extends StatefulWidget {
 }
 
 class _RestuarantFormState extends State<RestuarantForm> {
-  final formKey = GlobalKey<FormState>(); //ประกาศ FormState เพื่อเรียกใช้ Form
+  final formKey = GlobalKey<FormState>(); 
 
-//ประกาศตัวแปรเพื่อรับค่าจากการกรอกข้อมูล
+
   TextEditingController restuarantNameController = TextEditingController();
   TextEditingController restuarantOwnerController = TextEditingController();
   TextEditingController restuarantTelController = TextEditingController();
   TextEditingController restuarantAddressController = TextEditingController();
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +60,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                   margin:
                                       const EdgeInsets.only(top: 80, left: 15),
                                   child: const Text(
-                                    "รายละเอียดร้านอาหาร",
+                                    "Restaurant Details",
                                     style: TextStyle(
                                         fontSize: 35,
                                         fontFamily: 'NotoSansThai-Regular',
@@ -92,7 +92,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "ชื่อร้านอาหาร"),
+                                            hintText: "Restaurant Name"),
                                       ),
                                     ),
                                   ),
@@ -122,7 +122,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "ชื่อเจ้าของร้านอาหาร"),
+                                            hintText: "Restaurant Owner Name"),
                                       ),
                                     ),
                                   ),
@@ -152,7 +152,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "ที่อยู่ร้านอาหาร"),
+                                            hintText: "Restaurant Address"),
                                       ),
                                     ),
                                   ),
@@ -182,7 +182,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "เบอร์โทรศัพท์"),
+                                            hintText: "Phone Number"),
                                       ),
                                     ),
                                   ),
@@ -212,7 +212,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
     );
   }
 
-//เป็น widget ปุ่มกดยืนยัน
+
   Widget _showOKButton() {
     // ignore: deprecated_member_use
     return Center(
@@ -226,7 +226,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15))),
           onPressed: () {
-            //ส่งข้อมูลไปบันทึกใน firebase
+            
             var firebaseUser = FirebaseAuth.instance.currentUser;
             FirebaseFirestore.instance
                 .collection("restuarants")
@@ -243,7 +243,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
               return ResMetaMark();
             }));
           },
-          child: const Text("ยืนยัน",
+          child: const Text("Confirm",
               style:
                   TextStyle(fontSize: 22, fontFamily: 'NotoSansThai-Regular')),
         ),
