@@ -94,7 +94,7 @@ class _RestuarantState extends State<Restuarant> {
                                 }));
                               },
                               child: const Text(
-                                "เข้าสู่ระบบ",
+                                "Log In",
                                 style: TextStyle(
                                     fontSize: 22,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -118,7 +118,7 @@ class _RestuarantState extends State<Restuarant> {
                                   return const RestuarantRegister();
                                 }));
                               },
-                              child: const Text("สมัครสมาชิก",
+                              child: const Text("Subscribe",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular',
