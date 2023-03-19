@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:projectfood/about_customer/customer.dart';
 import 'package:projectfood/about_restuarant/restuarant.dart';
 import 'package:projectfood/about_rider/rider.dart';
+import 'package:projectfood/widgets/button.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         brightness: Brightness.light,
@@ -37,18 +39,48 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text("Food Delivery"),
-      ),
-      body: Column(
+      body: Container(
+        color: Colors.black,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Opacity(
+                opacity: 0.3,
+                child: Image.asset('images/imagefood.jpg',
+                 fit: BoxFit.fitHeight),
+                ),
+                ),
+      Center(
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+                      Text('Bumble Food',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold
+                      )
+                      ),
+                      Text('"Fast & Furious"',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      )
+                      ),
+                      SizedBox(height: 80),
+                      
           Builder(
             builder: (context) => Center(
               // ignore: deprecated_member_use
               child: ElevatedButton(
-                child: const Text("Restaurant"),
+                style: buttonPrimary,
+                child: const Text("RESTAURANT",
+                style: TextStyle(fontSize: 20),
+                ),
                 onPressed: () => {
                   Navigator.push(
                       context,
@@ -58,11 +90,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          SizedBox(height: 20),
           Builder(
             builder: (context) => Center(
               // ignore: deprecated_member_use
               child: ElevatedButton(
-                child: const Text("customer"),
+                style: buttonPrimary,
+                child: const Text("CUSTOMER", 
+                style: TextStyle(fontSize: 20),
+                ),
                 onPressed: () => {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Customer()))
@@ -70,11 +106,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+          SizedBox(height: 20),
           Builder(
             builder: (context) => Center(
               // ignore: deprecated_member_use
               child: ElevatedButton(
-                child: const Text("Rider-Provider"),
+                style: buttonPrimary,
+                child: const Text("RIDER",
+                style: TextStyle(fontSize: 20),
+                ),
                 onPressed: () => {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Rider()))
@@ -84,6 +124,11 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
+    ),
+          ],
+        ),
+      ),
     );
   }
 }
+ 
