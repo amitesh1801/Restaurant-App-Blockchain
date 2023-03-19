@@ -66,7 +66,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "แก้ไขข้อมูลส่วนตัว",
+            "edit personal information",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 189,
@@ -114,7 +114,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "ชื่อร้าน",
+                      "shop name",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -136,7 +136,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                         controller: restuarantNameController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "ชื่อร้าน",
+                          hintText: "shop name",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -146,7 +146,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                       ),
                     ),
                     const Text(
-                      "ชื่อเจ้าของร้าน",
+                      "shop owner name",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -168,7 +168,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                         controller: restuarantOwnerController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "ชื่อเจ้าของร้าน",
+                          hintText: "shop owner name",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -178,7 +178,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                       ),
                     ),
                     const Text(
-                      "เบอร์โทรศัพท์",
+                      "phone number",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -205,12 +205,12 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "เบอร์โทรศัพท์",
+                          hintText: "phone number",
                         ),
                       ),
                     ),
                     const Text(
-                      "ที่อยู่",
+                      "address",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -237,7 +237,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "ที่อยู่",
+                          hintText: "address",
                         ),
                       ),
                     ),
@@ -279,7 +279,7 @@ class _RestuarantEditInfoState extends State<RestuarantEditInfo> {
                 Navigator.pop(context);
               },
               child: const Text(
-                "ยืนยัน",
+                "confirm",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),

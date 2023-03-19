@@ -133,7 +133,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
     print("Finish${dataFinalMenuRes}");
     // print("เมนูลูกค้า${resultMenu[1]}");
 
-    print("เมนูร้านอาหาร${resultOrderRes}");
+    print("restaurant menu${resultOrderRes}");
     print(resultMenu.length);
     dataMenu = resultMenu;
     data = true;
@@ -323,7 +323,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                           width: 10,
                         ),
                         Text(
-                          "บัญชี",
+                          "account",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -368,7 +368,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                           width: 10,
                         ),
                         Text(
-                          "รายการอาหาร",
+                          "food items",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -415,7 +415,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                           width: 10,
                         ),
                         Text(
-                          "ออกจากระบบ",
+                          "Log out",
                           style: TextStyle(
                               fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                         ),
@@ -516,7 +516,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 20, left: 20),
               child: const Text(
-                "คำสั่งซื้อ :",
+                "order :",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,
@@ -611,7 +611,7 @@ class _RestuarantHomeState extends State<RestuarantHome> {
                                                         'NotoSansThai-Regular'),
                                               ),
                                               Text(
-                                                "${dataFinalMenuRes[index][3].toString()} รายการ",
+                                                "${dataFinalMenuRes[index][3].toString()} list",
                                                 style: const TextStyle(
                                                     fontFamily:
                                                         'NotoSansThai-Regular'),

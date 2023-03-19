@@ -60,7 +60,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                   margin:
                                       const EdgeInsets.only(top: 80, left: 15),
                                   child: const Text(
-                                    "รายละเอียดร้านอาหาร",
+                                    "restaurant details",
                                     style: TextStyle(
                                         fontSize: 35,
                                         fontFamily: 'NotoSansThai-Regular',
@@ -92,7 +92,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "ชื่อร้านอาหาร"),
+                                            hintText: "restaurant name"),
                                       ),
                                     ),
                                   ),
@@ -122,7 +122,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "ชื่อเจ้าของร้านอาหาร"),
+                                            hintText: "restaurant owner name"),
                                       ),
                                     ),
                                   ),
@@ -152,7 +152,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "ที่อยู่ร้านอาหาร"),
+                                            hintText: "restaurant address"),
                                       ),
                                     ),
                                   ),
@@ -182,7 +182,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
                                                     'NotoSansThai-Regular',
                                                 color: Color.fromRGBO(
                                                     178, 178, 178, 1)),
-                                            hintText: "เบอร์โทรศัพท์"),
+                                            hintText: "phone number"),
                                       ),
                                     ),
                                   ),
@@ -243,7 +243,7 @@ class _RestuarantFormState extends State<RestuarantForm> {
               return ResMetaMark();
             }));
           },
-          child: const Text("ยืนยัน",
+          child: const Text("confirm",
               style:
                   TextStyle(fontSize: 22, fontFamily: 'NotoSansThai-Regular')),
         ),

@@ -5,7 +5,7 @@ import 'package:projectfood/about_restuarant/restuarant_home.dart';
 import 'package:projectfood/widgets/customshape.dart';
 
 class ResAccountInfo extends StatefulWidget {
-  //ประกาศ Constructor เพื่อรับค่าจากหน้าอื่น
+  //tell Constructor to import value
   final String digitalWallet;
   final String privateWallet;
 
@@ -19,7 +19,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
   TextEditingController digitalWalletController = TextEditingController();
   TextEditingController privateWalletController = TextEditingController();
 
-  //Set ค่าตั้งที่รับมาให้กับตัวแปร
+  //Set inherit settings for variables
   @override
   void initState() {
     super.initState();
@@ -27,7 +27,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
     privateWalletController.text = widget.privateWallet;
   }
 
-//เป็นส่วนของ UI แสดงผลบนหน้าจอ
+//part of UI displayed on screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +51,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "บัญชีผู้ใช้งาน",
+            "User account",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 189,
@@ -100,7 +100,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "บัญชีกระเป๋าเงินดิจิทัล",
+                      "digital wallet account",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -123,7 +123,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                         controller: digitalWalletController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "บัญชีกระเป๋าเงินดิจิทัล",
+                          hintText: "digital wallet account",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -133,7 +133,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                       ),
                     ),
                     const Text(
-                      "รหัสกระเป๋าเงินดิจิทัล",
+                      "digital wallet code",
                       style: TextStyle(
                           fontSize: 18, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -156,7 +156,7 @@ class _ResAccountInfoState extends State<ResAccountInfo> {
                         controller: privateWalletController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "รหัสกระเป๋าเงินดิจิทัล",
+                          hintText: "digital wallet code",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,

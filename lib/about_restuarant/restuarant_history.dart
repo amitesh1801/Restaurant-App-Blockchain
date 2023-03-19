@@ -113,9 +113,9 @@ class _ResHistoryState extends State<ResHistory> {
       resultOrderRider.add(result2);
       resultOrderAddress.add(result3);
 
-      print("ลูกค้า${resultOrderCus}");
-      print("ร้านอาหาร${resultOrderRes}");
-      print("ไรเดอร์${resultOrderRider}");
+      print("customer${resultOrderCus}");
+      print("restaurant${resultOrderRes}");
+      print("rider${resultOrderRider}");
 
       data = true;
     }
@@ -176,9 +176,9 @@ class _ResHistoryState extends State<ResHistory> {
       formatedRiderDeliveryDate.add(formatter.format(dateRiderDeliveryDate));
     }
 
-    print("ออเดอร์ลูกค้า${dataFinalMenuHisCus}");
-    print("ออเดอร์ร้านอาหาร${timeRes}");
-    print("เวลา${formatedResOrderFinish}");
+    print("customer order${dataFinalMenuHisCus}");
+    print("restaurant order${timeRes}");
+    print("time${formatedResOrderFinish}");
   }
 
   //เป็นส่วนของ UI แสดงผลบนหน้าจอ
@@ -193,7 +193,7 @@ class _ResHistoryState extends State<ResHistory> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ประวัติคำสั่งซื้อ",
+            "Order History",
             style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 180,
@@ -211,7 +211,7 @@ class _ResHistoryState extends State<ResHistory> {
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(top: 20, left: 20),
               child: const Text(
-                "คำสั่งซื้อล่าสุด :",
+                "last order :",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,

@@ -19,7 +19,7 @@ class _ManageMenuState extends State<ManageMenu> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "รายการอาหาร",
+            "food items",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -65,7 +65,7 @@ class _ManageMenuState extends State<ManageMenu> {
                     MaterialPageRoute(builder: (context) => MenuForm()));
               },
               child: const Text(
-                "เพิ่มรายการอาหาร",
+                "add food items",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
