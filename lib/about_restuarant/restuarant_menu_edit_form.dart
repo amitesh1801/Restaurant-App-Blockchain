@@ -46,7 +46,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "รายการอาหาร",
+            "food items",
             style: TextStyle(fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 165,
@@ -115,7 +115,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                               fontSize: 20,
                               fontFamily: 'NotoSansThai-Regular',
                               color: Color.fromRGBO(88, 88, 88, 1)),
-                          hintText: "ชื่ออาหาร",
+                          hintText: "food name",
                         ),
                       ),
                     ),
@@ -136,7 +136,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                         controller: menuPriceController,
                         keyboardType: TextInputType.number,
                         decoration: const InputDecoration(
-                          hintText: "ราคา",
+                          hintText: "price",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -158,7 +158,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                         controller: menuDescriptController,
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
-                          hintText: "คำอธิบายอาหาร",
+                          hintText: "description",
                           border: InputBorder.none,
                           hintStyle: TextStyle(
                               fontSize: 20,
@@ -204,7 +204,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                     Navigator.of(context).pop();
                   },
                   child: const Text(
-                    "ลบรายการอาหาร",
+                    "remove food items",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
@@ -232,7 +232,7 @@ class _MenuEditFormState extends State<MenuEditForm> {
                     Navigator.of(context).pop();
                   },
                   child: const Text(
-                    "แก้ไขรายการอาหาร",
+                    "edit food list",
                     style: TextStyle(
                         fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                   )),
