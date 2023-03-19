@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResDetailHistory extends StatefulWidget {
-  //ประกาศ constructor เพื่อรับค่าจากหน้าอื่น
+  
   List<dynamic> resultOrderCus = [];
   List<dynamic> resultOrderRes = [];
   List<dynamic> resultOrderRider = [];
@@ -35,7 +35,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
   bool statusStateOrder = false;
   var timeSubmitRider;
 
-  //Set ค่าตั้งต้น
+  
   @override
   void initState() {
     super.initState();
@@ -45,14 +45,14 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
     print(widget.resultOrderRider);
 
     if (widget.resultOrderRes[0][5].toString() != '0') {
-      stateOrder = "ทำอาหารเสร็จสิ้น";
+      stateOrder = "Finished Cooking";
       statusStateOrder = true;
     } else if (widget.resultOrderRes[0][4].toString() == '2') {
-      stateOrder = "อาหารหมด";
+      stateOrder = "Out of Food";
     }
   }
 
-  //เป็นส่วนของ UI แสดงผลบนหน้าจอ
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +65,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "ประวัติคำสั่งซื้อ",
+            "Order History",
             style: TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
           ),
           width: 180,
@@ -86,7 +86,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    "รหัสคำสั่งซื้อ",
+                    "Order ID",
                     style: TextStyle(
                         fontFamily: 'NotoSansThai-Regular', fontSize: 14),
                   ),
@@ -164,7 +164,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                 children: [
                   Container(
                     child: const Text(
-                      "สรุปคำสั่งซื้อ",
+                      "Order Summary",
                       style: TextStyle(
                           fontFamily: 'NotoSansThai-Regular',
                           fontSize: 18,
@@ -227,7 +227,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                 children: [
                   Container(
                     child: const Text(
-                      "รวมค่าอาหารทั้งหมด",
+                      "All Food Included",
                       style: TextStyle(
                           fontFamily: 'NotoSansThai-Regular',
                           fontSize: 18,
@@ -250,7 +250,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     children: [
                       Container(
                         child: const Text(
-                          "ค่าอาหาร",
+                          "Meal",
                           style: TextStyle(
                             fontFamily: 'NotoSansThai-Regular',
                             fontSize: 18,
@@ -275,7 +275,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          child: const Text("ค่าจัดส่ง",
+                          child: const Text("Shipping Cost",
                               style: TextStyle(
                                   fontFamily: 'NotoSansThai-Regular',
                                   fontSize: 18)),
@@ -305,7 +305,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        child: const Text("ราคาทั้งหมด",
+                        child: const Text("Total Price",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
@@ -334,7 +334,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                 children: [
                   Container(
                     child: const Text(
-                      "รายละเอียดการรับคำสั่งซื้อของร้านอาหาร",
+                      "Details of Restaurant Orders",
                       style: TextStyle(
                           fontFamily: 'NotoSansThai-Regular',
                           fontSize: 18,
@@ -356,7 +356,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาที่รับคำสั่งซื้อ",
+                        child: const Text("Order Acceptance Time",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
@@ -373,7 +373,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาที่เตรียมอาหารเสร็จสิ้น",
+                        child: const Text("Total Time for Food Preparation",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
@@ -401,7 +401,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                 children: [
                   Container(
                     child: const Text(
-                      "รายละเอียดการรับคำสั่งซื้อของพนักงานขนส่งอาหาร",
+                      "Order Details received by Delivery Staff",
                       style: TextStyle(
                           fontFamily: 'NotoSansThai-Regular',
                           fontSize: 18,
@@ -423,7 +423,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        child: const Text("ข้อมูลพนักงานขนส่งอาหาร :",
+                        child: const Text("Delivery Staff Information :",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18,
@@ -458,7 +458,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาที่รับคำสั่งซื้อ",
+                        child: const Text("Order Acceptance Time",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
@@ -475,7 +475,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาที่รับอาหารจากร้านอาหาร",
+                        child: const Text("Time of receiving food from Restaurant",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
@@ -492,7 +492,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาที่เดินทางถึงบ้านลูกค้า",
+                        child: const Text("Arrival Time",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
@@ -509,7 +509,7 @@ class _ResDetailHistoryState extends State<ResDetailHistory> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text("เวลาเสร็จสิ้นกระบวนการจัดส่ง",
+                        child: const Text("Delivery Process Completion Time",
                             style: TextStyle(
                                 fontFamily: 'NotoSansThai-Regular',
                                 fontSize: 18)),
