@@ -78,7 +78,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                             margin: const EdgeInsets.only(
                                                 top: 80, left: 15),
                                             child: const Text(
-                                              "เข้าสู่ระบบ",
+                                              "login",
                                               style: TextStyle(
                                                   fontSize: 35,
                                                   fontFamily:
@@ -111,7 +111,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                                       const InputDecoration(
                                                           border:
                                                               InputBorder.none,
-                                                          hintText: 'อีเมล',
+                                                          hintText: 'Email',
                                                           icon: Icon(
                                                             Icons
                                                                 .email_outlined,
@@ -146,10 +146,10 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                                   validator: MultiValidator([
                                                     RequiredValidator(
                                                         errorText:
-                                                            "กรุณาป้อนอีเมล"),
+                                                            "Please enter your email"),
                                                     EmailValidator(
                                                         errorText:
-                                                            "รูปแบบอีเมลไม่ถูกต้อง")
+                                                            "Invalid format")
                                                   ]),
                                                   onSaved: (String? email) {
                                                     profile.profileEmail =
@@ -187,7 +187,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                                       const InputDecoration(
                                                           border:
                                                               InputBorder.none,
-                                                          hintText: 'รหัสผ่าน',
+                                                          hintText: 'password',
                                                           icon: Icon(
                                                             Icons.key_outlined,
                                                             size: 30,
@@ -220,7 +220,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                                                       1))),
                                                   validator: RequiredValidator(
                                                       errorText:
-                                                          "กรุณาป้อนรหัสผ่าน"),
+                                                          "Please enter your password"),
                                                   onSaved: (String? password) {
                                                     profile.profilePassword =
                                                         password!;
@@ -251,7 +251,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                                                     .circular(
                                                                         15))),
                                                 child: const Text(
-                                                  "เข้าสู่ระบบ",
+                                                  "login",
                                                   style: TextStyle(
                                                       fontSize: 20,
                                                       fontFamily:
@@ -319,7 +319,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                   children: [
                                     Container(
                                       child: const Text(
-                                        "หากคุณยังไม่มีบัญชีผู้ใช้คลิก",
+                                        "Don't have an account yet, click",
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.white,
@@ -336,7 +336,7 @@ class _RestuarantLoginState extends State<RestuarantLogin> {
                                       },
                                       child: Container(
                                         child: const Text(
-                                          " สมัครสมาชิก",
+                                          " Subscribe",
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Color.fromRGBO(
