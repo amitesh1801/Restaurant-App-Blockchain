@@ -86,7 +86,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "order",
+            "Order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -139,7 +139,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "ordered by:",
+                      "Ordered By:",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -272,7 +272,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "all food included",
+                                "All Food Included",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -290,7 +290,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "shipping cost",
+                                  "Shipping Cost",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontFamily: 'NotoSansThai-Regular'),
@@ -321,7 +321,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          child: Text("total price",
+                          child: Text("Total Price",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'NotoSansThai-Regular')),
@@ -406,7 +406,7 @@ class _ResAcceptOrderState extends State<ResAcceptOrder> {
                     print(restaurantDecline.runtimeType);
                   },
                   child: const Text(
-                    "refuse",
+                    "Refuse",
                     style: TextStyle(
                         fontSize: 20,
                         fontFamily: 'NotoSansThai-Regular',
