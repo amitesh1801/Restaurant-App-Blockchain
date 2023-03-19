@@ -54,7 +54,7 @@ class _ResMetaMarkState extends State<ResMetaMark> {
                             Container(
                               margin: const EdgeInsets.only(top: 80, left: 15),
                               child: const Text(
-                                "กระเป๋าเงินดิจิทัล",
+                                "Digital Wallet",
                                 style: TextStyle(
                                     fontSize: 35,
                                     fontFamily: 'NotoSansThai-Regular',
@@ -80,7 +80,7 @@ class _ResMetaMarkState extends State<ResMetaMark> {
                                   controller: customerDWController,
                                   keyboardType: TextInputType.text,
                                   decoration: const InputDecoration(
-                                    hintText: "หมายเลขกระเป๋าตังค์ดิจิทัล",
+                                    hintText: "Digital Wallet Number",
                                     border: InputBorder.none,
                                     hintStyle: TextStyle(
                                         fontSize: 20,
@@ -117,7 +117,7 @@ class _ResMetaMarkState extends State<ResMetaMark> {
                                           color:
                                               Color.fromRGBO(178, 178, 178, 1)),
                                       hintText:
-                                          "คีย์ส่วนตัวกระเป๋าตังค์ดิจิทัล"),
+                                          "Digital Wallet Private Key"),
                                 ),
                               ),
                             ),
@@ -169,7 +169,7 @@ class _ResMetaMarkState extends State<ResMetaMark> {
               return const RestuarantHome();
             }));
           },
-          child: const Text("บันทึกข้อมูล",
+          child: const Text("Save Data",
               style:
                   TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular')),
         ),
