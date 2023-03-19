@@ -42,7 +42,7 @@ class _RiderInfoState extends State<RiderInfo> {
         ),
         title: Container(
           alignment: Alignment.center,
-          child: const Text("ข้อมูลส่วนตัว",
+          child: const Text("Personal Information",
               style: TextStyle(fontFamily: 'NotoSansThai-Medium')),
           width: 165,
           height: 37,
@@ -193,36 +193,6 @@ class _RiderInfoState extends State<RiderInfo> {
                                       const SizedBox(
                                         height: 100,
                                       ),
-                                      // Container(
-                                      //   margin: const EdgeInsets.only(
-                                      //       top: 20, left: 10),
-                                      //   child: Row(
-                                      //     mainAxisAlignment:
-                                      //         MainAxisAlignment.center,
-                                      //     children: [
-                                      //       ElevatedButton(
-                                      //           onPressed: () {
-                                      //             Navigator.push(context,
-                                      //                 MaterialPageRoute(
-                                      //                     builder: (context) {
-                                      //               return RiderEditInfo(
-                                      //                   riderId: document[
-                                      //                       "rider_id"],
-                                      //                   riderName: document[
-                                      //                       "rider_name"],
-                                      //                   riderCarModel: document[
-                                      //                       "rider_car_model"],
-                                      //                   riderTel: document[
-                                      //                       "rider_tel"],
-                                      //                   riderlicensePlate: document[
-                                      //                       "rider_license_plate"]);
-                                      //             }));
-                                      //           },
-                                      //           child:
-                                      //               const Text("แก้ไขข้อมูล"))
-                                      //     ],
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 )),
@@ -256,7 +226,7 @@ class _RiderInfoState extends State<RiderInfo> {
                                 width: 20,
                               ),
                               Text(
-                                "บัญชี",
+                                "Account",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -294,7 +264,7 @@ class _RiderInfoState extends State<RiderInfo> {
                                 width: 20,
                               ),
                               Text(
-                                "ประวัติการสั่งซื้อ",
+                                "Order History",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -339,7 +309,7 @@ class _RiderInfoState extends State<RiderInfo> {
                                 width: 20,
                               ),
                               Text(
-                                "ออกจากระบบ",
+                                "LogOut",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),

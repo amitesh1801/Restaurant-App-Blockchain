@@ -22,7 +22,7 @@ class _RiderMetamarkState extends State<RiderMetamark> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 191, 64, 1),
       // appBar: AppBar(
-      //   title: const Text("กรอกรหัสกระเป๋าตังค์ดิจิทัล"),
+      //   title: const Text("Enter the digital wallet code."),
       // ),
       body: SingleChildScrollView(
         child: Column(
@@ -57,7 +57,7 @@ class _RiderMetamarkState extends State<RiderMetamark> {
                             Container(
                               margin: const EdgeInsets.only(top: 80, left: 15),
                               child: const Text(
-                                "กระเป๋าเงินดิจิทัล",
+                                "Digital Wallet",
                                 style: TextStyle(
                                     fontSize: 35,
                                     fontFamily: 'NotoSansThai-Regular',
@@ -89,7 +89,7 @@ class _RiderMetamarkState extends State<RiderMetamark> {
                                           fontFamily: 'NotoSansThai-Regular',
                                           color:
                                               Color.fromRGBO(178, 178, 178, 1)),
-                                      hintText: "หมายเลขกระเป๋าตังค์ดิจิทัล"),
+                                      hintText: "Digital wallet number"),
                                 ),
                               ),
                             ),
@@ -119,7 +119,7 @@ class _RiderMetamarkState extends State<RiderMetamark> {
                                           color:
                                               Color.fromRGBO(178, 178, 178, 1)),
                                       hintText:
-                                          "คีย์ส่วนตัวกระเป๋าตังค์ดิจิทัล"),
+                                          "Private key digital wallet"),
                                 ),
                               ),
                             ),
@@ -171,7 +171,7 @@ class _RiderMetamarkState extends State<RiderMetamark> {
               return RiderHome();
             }));
           },
-          child: const Text("ยืนยัน",
+          child: const Text("Confirm",
               style:
                   TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular')),
         ),
