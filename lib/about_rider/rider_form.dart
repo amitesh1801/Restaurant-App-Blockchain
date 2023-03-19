@@ -22,7 +22,7 @@ class _RiderFormState extends State<RiderForm> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 191, 64, 1),
       // appBar: AppBar(
-      //   title: const Text("สมัครสมาชิกสำหรับพนักงานขนส่งอาหาร"),
+      //   title: const Text("Sign up for food delivery workers"),
       // ),
       body: SingleChildScrollView(
         child: Column(
@@ -57,7 +57,7 @@ class _RiderFormState extends State<RiderForm> {
                             Container(
                               margin: const EdgeInsets.only(top: 80, left: 15),
                               child: const Text(
-                                "ข้อมูลส่วนตัว",
+                                "Personal Information",
                                 style: TextStyle(
                                     fontSize: 35,
                                     fontFamily: 'NotoSansThai-Regular',
@@ -86,7 +86,7 @@ class _RiderFormState extends State<RiderForm> {
                                             fontFamily: 'NotoSansThai-Regular',
                                             color: Color.fromRGBO(
                                                 178, 178, 178, 1)),
-                                        hintText: "ชื่อพนักงานขนส่งอาหาร"),
+                                        hintText: "Name of food delivery worker"),
                                   ),
                                 ),
                               ),
@@ -113,7 +113,7 @@ class _RiderFormState extends State<RiderForm> {
                                             fontFamily: 'NotoSansThai-Regular',
                                             color: Color.fromRGBO(
                                                 178, 178, 178, 1)),
-                                        hintText: "รุ่นรถ"),
+                                        hintText: "Vehicle Model"),
                                   ),
                                 ),
                               ),
@@ -140,7 +140,7 @@ class _RiderFormState extends State<RiderForm> {
                                             color: Color.fromRGBO(
                                                 178, 178, 178, 1)),
                                         border: InputBorder.none,
-                                        hintText: "ทะเบียนรถ"),
+                                        hintText: "Vehicle Registration"),
                                   ),
                                 ),
                               ),
@@ -167,7 +167,7 @@ class _RiderFormState extends State<RiderForm> {
                                             fontFamily: 'NotoSansThai-Regular',
                                             color: Color.fromRGBO(
                                                 178, 178, 178, 1)),
-                                        hintText: "เบอร์โทรศัพท์"),
+                                        hintText: "Telephone Number"),
                                   ),
                                 ),
                               ),
@@ -224,7 +224,7 @@ class _RiderFormState extends State<RiderForm> {
               return RiderMetamark();
             }));
           },
-          child: const Text("ยืนยัน",
+          child: const Text("Confirm",
               style:
                   TextStyle(fontSize: 22, fontFamily: 'NotoSansThai-Regular')),
         ),
