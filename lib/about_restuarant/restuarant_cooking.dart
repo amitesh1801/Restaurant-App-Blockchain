@@ -10,7 +10,7 @@ import 'package:projectfood/about_restuarant/restuarant_home.dart';
 import 'package:web3dart/web3dart.dart';
 
 class ResCooking extends StatefulWidget {
-  //ประกาศ Constructor เพื่อรับค่าที่ส้่งมาจากหน้าอื่น
+  //Constructor to take values from other pages
   final String dataMenuname;
   final String MenuPrice;
   final String dataName;
@@ -31,9 +31,9 @@ class ResCooking extends StatefulWidget {
 }
 
 class _ResCookingState extends State<ResCooking> {
-  List<dynamic> dataFinalMenuRider = []; //เก็บข้อมูลออเดอร์ไรเดอร์
-  List<dynamic> resultMenu = []; //เก็บข้อมูลออเดอร์ลูกค้า
-  List<dynamic> amoutMenu = []; //เก็บจำนวนเมนูทั้งหมด
+  List<dynamic> dataFinalMenuRider = []; //Collect rider order information
+  List<dynamic> resultMenu = []; //Store customer order information
+  List<dynamic> amoutMenu = []; // total number of menu items.
   List<dynamic> resultOrderRider = [];
 
   var riderName = "";
@@ -46,7 +46,7 @@ class _ResCookingState extends State<ResCooking> {
   bool data = false;
   bool statusRider = false;
   final myAddress =
-      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //หมายเลขกระเป๋าตังร้านอาหาร
+      "0x0b2194Fde4B6D32f23331C12EA21c4B7c06efCa3"; //Restaurant bag number
 
   //Set ค่าตั้งต้น
   @override
@@ -116,7 +116,7 @@ class _ResCookingState extends State<ResCooking> {
           await query("readOrderRestaurant", [BigInt.from(i)]);
       resultOrderRes.clear();
       resultOrderRes.add(result2);
-      print("ร้านอาหาร${resultOrderRes}");
+      print("Rider${resultOrderRes}");
     }
 
     if (resultOrderRider[0][3].toString() != '0' &&
@@ -161,7 +161,7 @@ class _ResCookingState extends State<ResCooking> {
         title: Container(
           alignment: Alignment.center,
           child: const Text(
-            "คำสั่งซื้อ",
+            "order",
             style: TextStyle(fontFamily: 'NotoSansThai-Medium'),
           ),
           width: 165,
@@ -183,7 +183,7 @@ class _ResCookingState extends State<ResCooking> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "รหัสคำสั่งซื้อ",
+                    "Order ID",
                     style: TextStyle(
                         fontSize: 16,
                         fontFamily: 'NotoSansThai-Regular',
@@ -214,7 +214,7 @@ class _ResCookingState extends State<ResCooking> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "สั่งโดย:",
+                      "ordered by:",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -280,7 +280,7 @@ class _ResCookingState extends State<ResCooking> {
                         children: [
                           Container(
                             child: Text(
-                              "ผู้จัดส่ง",
+                              "Courier",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'NotoSansThai-Regular'),
@@ -351,7 +351,7 @@ class _ResCookingState extends State<ResCooking> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "สรุปคำสั่งซื้อ",
+                      "Order Summary",
                       style: TextStyle(
                           fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
                     ),
@@ -423,7 +423,7 @@ class _ResCookingState extends State<ResCooking> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "รวมค่าอาหารทั้งหมด",
+                                "all food included",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular'),
@@ -441,7 +441,7 @@ class _ResCookingState extends State<ResCooking> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "ค่าจัดส่ง",
+                                  "shipping cost",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontFamily: 'NotoSansThai-Regular'),
@@ -472,7 +472,7 @@ class _ResCookingState extends State<ResCooking> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          child: Text("ราคาทั้งหมด",
+                          child: Text("total price",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontFamily: 'NotoSansThai-Regular')),
@@ -539,14 +539,14 @@ class _ResCookingState extends State<ResCooking> {
                 //เรียกใช้ ฟังก์ชั้นรับออเดอร์
                 restaurantSubmit(context);
                 print(restaurantSubmit.runtimeType);
-                print("คำสั่งซื้อเสร็จแล้ว");
+                print("order finished");
 
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return RestuarantHome();
                 }));
               },
               child: const Text(
-                "เตรียมอาหารเสร็จสิ้น",
+                "finished preparing food",
                 style:
                     TextStyle(fontSize: 20, fontFamily: 'NotoSansThai-Regular'),
               )),
