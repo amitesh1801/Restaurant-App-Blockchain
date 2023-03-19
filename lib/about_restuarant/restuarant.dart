@@ -118,7 +118,7 @@ class _RestuarantState extends State<Restuarant> {
                                   return const RestuarantRegister();
                                 }));
                               },
-                              child: const Text("Subscribe",
+                              child: const Text("Register",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontFamily: 'NotoSansThai-Regular',
