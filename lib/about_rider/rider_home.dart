@@ -23,7 +23,7 @@ class RiderHome extends StatefulWidget {
 class _RiderHomeState extends State<RiderHome> {
   final auth = FirebaseAuth.instance;
   var firebaseUser = FirebaseAuth.instance.currentUser;
-  bool viewVisible = true; //show list คำสั่งซื้อ
+  bool viewVisible = true; //show list order
 
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -40,7 +40,7 @@ class _RiderHomeState extends State<RiderHome> {
   List<dynamic> dataFinalMenuRider = [];
 
   final myAddress =
-      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; //หมายเลขกระเป๋าตัง
+      "0xE70D6D9c9aCEa718De2D126617Cd5E94d16d072a"; 
   @override
   void initState() {
     httpClient = Client();
@@ -96,9 +96,9 @@ class _RiderHomeState extends State<RiderHome> {
       resultOrderRider.add(result1);
       resultOrderRes.add(result2);
 
-      print("ลูกค้า${resultMenu}");
-      print("ไรเดอร์${result1}");
-      print("ร้านอาหาร${result2}");
+      print("Customer${resultMenu}");
+      print("Rider${result1}");
+      print("Restaurant${result2}");
       // print(resultMenu.length);
 
       if (resultOrderRider[i][3] == 0) {
@@ -106,14 +106,14 @@ class _RiderHomeState extends State<RiderHome> {
       }
     }
 
-    //อ่านข้อมูลของไรเดอร์
+    //Read the rider's information.
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       if (resultOrderRider[i][3].toString() == 0.toString()) {
         dataMenuRider.add(resultOrderRider[i][0]);
       }
     }
 
-    //query เมนูที่ยังไม่ได้รับ
+    //query the menu that has not been received
     for (int i = 0; i < amoutMenu[0].toInt(); i++) {
       if (resultMenu[i][0].toString() == resultOrderRes[i][0].toString() &&
           resultOrderRes[i][4].toString() == '1' &&
@@ -138,10 +138,10 @@ class _RiderHomeState extends State<RiderHome> {
       resultAddress.docs.forEach((res_address) {
         // print(res_address.data()["restuarant_address"]);
         dataAddress.add(res_address.data()["restuarant_address"]);
-        // print("ที่อยู่${dataAddress}");
+        // print("Address${dataAddress}");
       });
     }
-    //print("ที่อยู่อันนี้ ${dataAddress[0]}");
+    //print("This address${dataAddress[0]}");
   }
 
   @override
@@ -256,7 +256,7 @@ class _RiderHomeState extends State<RiderHome> {
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(top: 20, left: 20),
               child: Text(
-                "คำสั่งซื้อ :",
+                "Order:",
                 style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
