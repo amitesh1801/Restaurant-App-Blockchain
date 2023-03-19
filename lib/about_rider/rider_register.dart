@@ -40,7 +40,7 @@ class _RiderRegisterState extends State<RiderRegister> {
             return Scaffold(
               backgroundColor: const Color.fromRGBO(255, 191, 64, 1),
               // appBar: AppBar(
-              //   title: const Text("สร้างบัญชีผู้ใช้"),
+              //   title: const Text("Create an account"),
               // ),
               body: SingleChildScrollView(
                 child: Column(
@@ -80,7 +80,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                             margin: const EdgeInsets.only(
                                                 top: 80, left: 15),
                                             child: const Text(
-                                              "สมัครสมาชิก",
+                                              "Register",
                                               style: TextStyle(
                                                   fontSize: 35,
                                                   fontFamily:
@@ -110,7 +110,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                                       const InputDecoration(
                                                           border:
                                                               InputBorder.none,
-                                                          hintText: 'อีเมล',
+                                                          hintText: 'Email',
                                                           icon: Icon(
                                                             Icons
                                                                 .email_outlined,
@@ -135,10 +135,10 @@ class _RiderRegisterState extends State<RiderRegister> {
                                                   validator: MultiValidator([
                                                     RequiredValidator(
                                                         errorText:
-                                                            "กรุณาป้อนอีเมล"),
+                                                            "Please enter your email"),
                                                     EmailValidator(
                                                         errorText:
-                                                            "รูปแบบอีเมลไม่ถูกต้อง")
+                                                            "Invalid email format")
                                                   ]),
                                                   onSaved: (String? email) {
                                                     profile.profileEmail =
@@ -173,7 +173,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                                       const InputDecoration(
                                                           border:
                                                               InputBorder.none,
-                                                          hintText: 'รหัสผ่าน',
+                                                          hintText: 'Password',
                                                           icon: Icon(
                                                             Icons.key_outlined,
                                                             size: 30,
@@ -196,7 +196,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                                                       1))),
                                                   validator: RequiredValidator(
                                                       errorText:
-                                                          "กรุณาป้อนรหัสผ่าน"),
+                                                          "Please enter your password."),
                                                   onSaved: (String? password) {
                                                     profile.profilePassword =
                                                         password!;
@@ -227,7 +227,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                                                     .circular(
                                                                         15))),
                                                 child: const Text(
-                                                  "สมัครสมาชิก",
+                                                  "Register",
                                                   style: TextStyle(
                                                       fontSize: 20,
                                                       fontFamily:
@@ -294,7 +294,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                   children: [
                                     Container(
                                       child: const Text(
-                                        "หากคุณยังมีบัญชีผู้ใช้แล้วคลิก",
+                                        "If you still have an account then, click",
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.white,
@@ -311,7 +311,7 @@ class _RiderRegisterState extends State<RiderRegister> {
                                       },
                                       child: Container(
                                         child: const Text(
-                                          " เข้าสู่ระบบ",
+                                          " LogIn",
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Color.fromRGBO(
